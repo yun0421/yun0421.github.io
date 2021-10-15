@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yun421.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="web1.F12查看源代码直接搞定 web2.只能输入一位，F12修改长度 web3.$_GET，只要我们传递的参数为what，并且内容为flag，即可输出flag web4.借助插件hackerbar进行一个POST传参 web5.题目要求num为1却不能是数字，这就很矛盾了，我们传一个以1开头，不能以数字结尾的字符串就行了 web6. web7.访问页面后它会无限刷新，我们挂一个Burp抓抓包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bugku">
+<meta property="og:url" content="http://yun421.top/2021/03/04/Bugku%20web%E5%8C%BA/index.html">
+<meta property="og:site_name" content="Yun421">
+<meta property="og:description" content="web1.F12查看源代码直接搞定 web2.只能输入一位，F12修改长度 web3.$_GET，只要我们传递的参数为what，并且内容为flag，即可输出flag web4.借助插件hackerbar进行一个POST传参 web5.题目要求num为1却不能是数字，这就很矛盾了，我们传一个以1开头，不能以数字结尾的字符串就行了 web6. web7.访问页面后它会无限刷新，我们挂一个Burp抓抓包">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304135636453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304135848918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304135938171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140104456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140134966.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140238144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021030414044188.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140554441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140733622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304140836267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021030414093948.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304141019314.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304141332305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304141620919.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304141512512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142108680.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142306817.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142428939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142523226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142629583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142802526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210304142907716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-03-04T06:40:16.000Z">
+<meta property="article:modified_time" content="2021-10-15T09:13:11.549Z">
+<meta property="article:author" content="Yun421">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210304135636453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="http://yun421.top/2021/03/04/Bugku%20web%E5%8C%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Bugku | Yun421</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Yun421" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yun421</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Bugku%20web%E5%8C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yun421">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yun421">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Bugku
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-04 14:40:16" itemprop="dateCreated datePublished" datetime="2021-03-04T14:40:16+08:00">2021-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-15 17:13:11" itemprop="dateModified" datetime="2021-10-15T17:13:11+08:00">2021-10-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>web1.<img src="https://img-blog.csdnimg.cn/20210304135636453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>F12查看源代码直接搞定</p>
+<p>web2.<img src="https://img-blog.csdnimg.cn/20210304135848918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>只能输入一位，F12修改长度<br><img src="https://img-blog.csdnimg.cn/20210304135938171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>web3.<br>$_GET，只要我们传递的参数为what，并且内容为flag，即可输出flag<br><img src="https://img-blog.csdnimg.cn/20210304140104456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>web4.<br><img src="https://img-blog.csdnimg.cn/20210304140134966.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>借助插件hackerbar进行一个POST传参</p>
+<p>web5.<br><img src="https://img-blog.csdnimg.cn/20210304140238144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>题目要求num为1却不能是数字，这就很矛盾了，我们传一个以1开头，不能以数字结尾的字符串就行了</p>
+<p>web6.<br><img src="https://img-blog.csdnimg.cn/2021030414044188.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210304140554441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>web7.<br>访问页面后它会无限刷新，我们挂一个Burp抓抓包就好了，会出现一个10.jpg的页面，这个页面的长度跟其他页面长度不同，flag就在里边<img src="https://img-blog.csdnimg.cn/20210304140733622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>web8.<br><img src="https://img-blog.csdnimg.cn/20210304140836267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>一开始想到的是用eval执行一个file()函数，来进行文件包含，但是这里对用户的输入进行了正则过滤，所以考虑到用GLOBAS[]输出所有的全局变量<br><img src="https://img-blog.csdnimg.cn/2021030414093948.png" alt="在这里插入图片描述"></p>
+<p>web9.<br><img src="https://img-blog.csdnimg.cn/20210304141019314.png" alt="在这里插入图片描述"><br>F12网络查看header得到flag，或者burp抓包得到</p>
+<p>web10.<br>打开后是一个黑页，御剑扫描<br><img src="https://img-blog.csdnimg.cn/20210304141332305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>访问后发现需要密码，试了试一些常规的shell弱口令得到flag，密码为hack</p>
+<p>web11.<br><img src="https://img-blog.csdnimg.cn/20210304141620919.png" alt="在这里插入图片描述"><br>base64解密得到密码</p>
+<p><img src="https://img-blog.csdnimg.cn/20210304141512512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>burp抓包xff：127.0.0.1即可</p>
+<p>web12.<br>var p1=’%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62’;<br>var p2=’%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b’;<br>eval(unescape(p1) + unescape(‘%35%34%61%61%32’ + p2));<br>拼接urldecode解码</p>
+<p>web13.<br>php://filter/read=convert.base64-encode/resource= 利用LFI来查看源码，题目也说了flag在index里，如果我们直接包含index.php，程序是会把它执行的，并不会输出源码，但是我们如果利用LFI漏洞来读取index，是会读到一串加密的字符串的<br><img src="https://img-blog.csdnimg.cn/20210304142108680.png" alt="在这里插入图片描述"><br>base64解码后得到flag</p>
+<p>web14.<br><img src="https://img-blog.csdnimg.cn/20210304142306817.png" alt="在这里插入图片描述"><br>看题目地址，提示爆破，且密码长度为5位数，一顿爆破结束</p>
+<p>web15.<br>拿出御剑来，专门扫一下.bak这种的备份文件吧<br><img src="https://img-blog.csdnimg.cn/20210304142428939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210304142523226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>你可能会发现这俩MD5是一样的，但我们传的值是不一样的，这是因为我们的key被过滤了，这里md5()相当于加密了个空气<img src="https://img-blog.csdnimg.cn/20210304142629583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>不会了</p>
+<p>web16.<br>成绩单这一道题就是一个简单的POST注入，用burp抓个包，丢sqlmap里跑就行了<img src="https://img-blog.csdnimg.cn/20210304142802526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Sqlmap -r C:\Users\Administrator\Desktop\1.txt -p id –dump -C “skctf_flag” -T “fl4g” -D “skctf_flag”<br><img src="https://img-blog.csdnimg.cn/20210304142907716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" rel="next" title="攻防世界高手区题解">
+      攻防世界高手区题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yun421"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Yun421</p>
+  <div class="site-description" itemprop="description">选择有时候比努力更重要</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yun0421" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yun0421" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2362702385@gmail.com" title="E-Mail → mailto:2362702385@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.baidu.com/" title="https:&#x2F;&#x2F;www.baidu.com" rel="noopener" target="_blank">百度</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yun421</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+<span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

