@@ -20,30 +20,38 @@
     var CONFIG = {"hostname":"yun421.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="短暂的热爱过后剩下的是坚持">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yun421">
-<meta property="og:url" content="http://yun421.top/index.html">
+  <meta name="description" content="ctfshow.命令执行类型一:web29-36变量c来接受并过滤传入的数据,eval函数来执行  类型二:web37-41变量c接收并过滤传入的数据,include来包含文件 类型三:web42-57接受并过滤传入的变量拼接命令执行（system函数） 类型四:web58-77PHP代码执行，突破禁用函数,绕过disable_functions web29![chrome_YQfHFrvnwg]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshow.命令执行">
+<meta property="og:url" content="http://yun421.top/2021/11/19/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="Yun421">
-<meta property="og:description" content="短暂的热爱过后剩下的是坚持">
+<meta property="og:description" content="ctfshow.命令执行类型一:web29-36变量c来接受并过滤传入的数据,eval函数来执行  类型二:web37-41变量c接收并过滤传入的数据,include来包含文件 类型三:web42-57接受并过滤传入的变量拼接命令执行（system函数） 类型四:web58-77PHP代码执行，突破禁用函数,绕过disable_functions web29![chrome_YQfHFrvnwg]">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_YSY1xydUVD.png">
+<meta property="og:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_AIWXSzD9PO.png">
+<meta property="og:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_CrmaHuAXkI.png">
+<meta property="og:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_SKumDWAvgc.png">
+<meta property="og:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_To8cEYQ66g.png">
+<meta property="article:published_time" content="2021-11-19T02:08:41.000Z">
+<meta property="article:modified_time" content="2021-11-19T02:41:27.647Z">
 <meta property="article:author" content="Yun421">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/23627/Pictures/Saved%20Pictures/chrome_YSY1xydUVD.png">
 
-<link rel="canonical" href="http://yun421.top/">
+<link rel="canonical" href="http://yun421.top/2021/11/19/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Yun421</title>
+  <title>ctfshow.命令执行 | Yun421</title>
   
 
 
@@ -163,9 +171,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -181,10 +190,9 @@
       <meta itemprop="name" content="Yun421">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/19/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" class="post-title-link" itemprop="url">ctfshow.命令执行</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ctfshow.命令执行
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -217,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="ctfshow-命令执行"><a href="#ctfshow-命令执行" class="headerlink" title="ctfshow.命令执行"></a>ctfshow.命令执行</h1><h3 id="类型一-web29-36"><a href="#类型一-web29-36" class="headerlink" title="类型一:web29-36"></a>类型一:web29-36</h3><p>变量c来接受并过滤传入的数据,eval函数来执行 </p>
+        <h1 id="ctfshow-命令执行"><a href="#ctfshow-命令执行" class="headerlink" title="ctfshow.命令执行"></a>ctfshow.命令执行</h1><h3 id="类型一-web29-36"><a href="#类型一-web29-36" class="headerlink" title="类型一:web29-36"></a>类型一:web29-36</h3><p>变量c来接受并过滤传入的数据,eval函数来执行 </p>
 <h3 id="类型二-web37-41"><a href="#类型二-web37-41" class="headerlink" title="类型二:web37-41"></a>类型二:web37-41</h3><p>变量c接收并过滤传入的数据,include来包含文件</p>
 <h3 id="类型三-web42-57"><a href="#类型三-web42-57" class="headerlink" title="类型三:web42-57"></a>类型三:web42-57</h3><p>接受并过滤传入的变量拼接命令执行（system函数）</p>
 <h3 id="类型四-web58-77"><a href="#类型四-web58-77" class="headerlink" title="类型四:web58-77"></a>类型四:web58-77</h3><p>PHP代码执行，突破禁用函数,绕过disable_functions</p>
@@ -664,633 +672,49 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="variable">$pi</span>=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));<span class="variable">$$pi</span>&#123;abs&#125;(<span class="variable">$$pi</span>&#123;acos&#125;)&amp;abs=system&amp;acos=tac f*</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/10/16/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/16/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">信息收集</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-10-16 15:13:08 / 修改时间：15:46:11" itemprop="dateCreated datePublished" datetime="2021-10-16T15:13:08+08:00">2021-10-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><h3 id="1-Google-hacking"><a href="#1-Google-hacking" class="headerlink" title="1.Google hacking"></a>1.Google hacking</h3><p><strong>常用搜索语法：</strong><br><strong>intitle:KEYWORD //搜索网页标题中含有关键词的网页</strong><br><strong>intext:KEYWORD //搜索站点正文中含有关键词的网页</strong><br><strong>inurl:KEYWORD //搜索URL中包含有指定字符串的网址</strong><br><strong>inurl:php?id= //搜索PHP网页</strong><br><strong>site:DOMAIN //在指定站点内查找相关的内容</strong><br><strong>filetype:FILE //搜索指定类型的文件</strong></p>
-<p><strong>我们可以同时附加多个条件进行筛选，比如 inurl:admin intitle:农具</strong><br><strong>两个筛选条件之间用空格隔开</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/16/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/04/16/SQL%E6%B3%A8%E5%85%A5/">
+    <div class="social-list">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/16/SQL%E6%B3%A8%E5%85%A5/" class="post-title-link" itemprop="url">SQL注入</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-16 21:27:08" itemprop="dateCreated datePublished" datetime="2021-04-16T21:27:08+08:00">2021-04-16</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:27:56" itemprop="dateModified" datetime="2021-11-05T16:27:56+08:00">2021-11-05</time>
-              </span>
 
-          
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
+    </div>
+  </div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-          <meta name="referrer" content="no-referrer" />
-# SQL注入
+      <footer class="post-footer">
 
-<h2 id="产生原理"><a href="#产生原理" class="headerlink" title="产生原理"></a>产生原理</h2><p>动态交互网站，实现交互利用用户输入<strong>拼接到SQL执行</strong>，输入不同导致返回结果不同。用户输入内容没有经过完美处理，而且构造SQL语句，直接将构造的SQL语句带入SQL语句中执行，导致SQL注入漏洞。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/16/SQL%E6%B3%A8%E5%85%A5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">文件上传</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:35:58" itemprop="dateCreated datePublished" datetime="2021-03-10T21:35:58+08:00">2021-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:34" itemprop="dateModified" datetime="2021-10-15T17:13:34+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.前台校验，无法上传PHP文件、jpg图片，上传png图片马，抓包改后缀<br>2.我们可以在.user.ini中设置php.ini中PHP_INI_PERDIR和PHP_INI_USER模式的 INI 设置，而且只要是在使用CGI／FastCGI模式的服务器上都可以使用.user.ini<br>auto_prepend_file和auto_append_file设置我们指定一个文件（如a.jpg），那么该文件就会被包含在要执行的php文件中（如index.php），<br>类似于在index.php中插入一句：require(./a.jpg);</p>
-<p>这两个设置的区别只是在于auto_prepend_file是在文件前插入；auto_append_file在文件最后插入（当文件调用的有exit()时该设置无效）</p>
-<p>所以要求当前目录必须要有php文件getflag思路：我们上传一个.user.ini 文件设置一个文件1.jpg然后访问index.php就相当于包含了1.jpg<br>1.我们先上传.user.ini文件（当然文件名抓包之后再修改）</p>
-<p>2.然后再上传包含的PHP文件，访问/upload/index.php自动包含</p>
-<p>3.使用hackbar或者蚁剑寻找并读取flag</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="post-title-link" itemprop="url">文件包含</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:29:56" itemprop="dateCreated datePublished" datetime="2021-03-10T21:29:56+08:00">2021-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-15 17:13:28" itemprop="dateModified" datetime="2021-10-15T17:13:28+08:00">2021-10-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>普通文件包含</p>
-<p>常见的php伪协议大致四种</p>
-<p>1.php://filter  主要用于读取源码<br>2.php://input  经常使用file_get_contents获取php://input内容<br>3.data://  执行命令<br>4.file://  访问本地文件系统</p>
-<p>不能忘了convert，用于转换编码，缺少会报错</p>
-<p>用日志包含绕过，将执行的命令插入日志中nginx日志在(/var/log/httpd/access.log)目录下</p>
-<p>利用PHP_SESSION_UPLOAD_PROGRESS进行文件包含</p>
-<p>1.简单来说，上面这个选项开启以后，上传文件，我们能够POST请求查看上传进度</p>
-<p>2.我们在session中写入我们要执行的代码</p>
-<p>3.用户可以自己定义Session ID，比如在Cookie里设置PHPSESSID=flag，PHP将会在服务器上创建一个文件：/tmp/sess_flag，我们能够命名’sess_’后面的名字</p>
-<p>4.之后要执行就要包含这个session文件</p>
-<p>5.默认情况下，session.upload_progress.cleanup是开启的，一旦读取了所有POST数据，就会清除进度信息</p>
-<p>6.于是我们需要条件竞争来读取文件，所谓条件竞争简单来说是在执行系统命令前先执行完自己的代码，在文件上传中很常见</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/ctfshow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/10/ctfshow/" class="post-title-link" itemprop="url">ctfshow Web</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-10 21:25:16" itemprop="dateCreated datePublished" datetime="2021-03-10T21:25:16+08:00">2021-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:29:33" itemprop="dateModified" datetime="2021-11-05T16:29:33+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>web签到题<br><img src="https://img-blog.csdnimg.cn/20210310191001410.png" alt="在这里插入图片描述"><br>本题考查信息搜集，F12查看源代码，<img src="https://img-blog.csdnimg.cn/20210310191045713.png" alt="在这里插入图片描述"><br>base64得到flag</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/10/ctfshow/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/16/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="prev" title="信息收集">
+      <i class="fa fa-chevron-left"></i> 信息收集
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">攻防世界新手区题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:52:33" itemprop="dateCreated datePublished" datetime="2021-03-04T14:52:33+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:29:50" itemprop="dateModified" datetime="2021-11-05T16:29:50+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。<br> 本题打开网页查看源代码即得到flag
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">攻防世界高手区题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:41:51" itemprop="dateCreated datePublished" datetime="2021-03-04T14:41:51+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:29:57" itemprop="dateModified" datetime="2021-11-05T16:29:57+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.</p>
-<p>   <img src="https://img-blog.csdnimg.cn/20201216202314127.png" alt="在这里插入图片描述"><br>   <img src="https://img-blog.csdnimg.cn/20201216202337147.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>index.php还是跳回1.php，但是已经可以看到flag<br><img src="https://img-blog.csdnimg.cn/20201216202453186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Bugku/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yun421">
-      <meta itemprop="description" content="短暂的热爱过后剩下的是坚持">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yun421">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Bugku/" class="post-title-link" itemprop="url">Bugku</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 14:40:16" itemprop="dateCreated datePublished" datetime="2021-03-04T14:40:16+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 16:29:19" itemprop="dateModified" datetime="2021-11-05T16:29:19+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>web1.<img src="https://img-blog.csdnimg.cn/20210304135636453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>F12查看源代码直接搞定</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/04/Bugku/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1343,6 +767,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">ctfshow.命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E4%B8%80-web29-36"><span class="nav-number">1.0.1.</span> <span class="nav-text">类型一:web29-36</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E4%BA%8C-web37-41"><span class="nav-number">1.0.2.</span> <span class="nav-text">类型二:web37-41</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E4%B8%89-web42-57"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型三:web42-57</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E5%9B%9B-web58-77"><span class="nav-number">1.0.4.</span> <span class="nav-text">类型四:web58-77</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web29"><span class="nav-number">1.1.</span> <span class="nav-text">web29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web30"><span class="nav-number">1.2.</span> <span class="nav-text">web30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web31"><span class="nav-number">1.3.</span> <span class="nav-text">web31</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web32"><span class="nav-number">1.4.</span> <span class="nav-text">web32</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web33"><span class="nav-number">1.5.</span> <span class="nav-text">web33</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web34"><span class="nav-number">1.6.</span> <span class="nav-text">web34</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web35"><span class="nav-number">1.7.</span> <span class="nav-text">web35</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web36"><span class="nav-number">1.8.</span> <span class="nav-text">web36</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web37"><span class="nav-number">1.9.</span> <span class="nav-text">web37</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web38"><span class="nav-number">1.10.</span> <span class="nav-text">web38</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web39"><span class="nav-number">1.11.</span> <span class="nav-text">web39</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web40"><span class="nav-number">1.12.</span> <span class="nav-text">web40</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E6%97%A0%E5%8F%82%E6%95%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">1.12.1.</span> <span class="nav-text">补充：无参数文件读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#print-r-scandir-39-39"><span class="nav-number">1.12.1.1.</span> <span class="nav-text">print_r(scandir(&#39;.&#39;))</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web41"><span class="nav-number">1.13.</span> <span class="nav-text">web41</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web42"><span class="nav-number">1.14.</span> <span class="nav-text">web42</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E8%A6%81%E7%82%B9%E5%88%86%E8%A7%A3"><span class="nav-number">1.14.0.1.</span> <span class="nav-text">补充：要点分解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web43"><span class="nav-number">1.15.</span> <span class="nav-text">web43</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web44"><span class="nav-number">1.16.</span> <span class="nav-text">web44</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web45"><span class="nav-number">1.17.</span> <span class="nav-text">web45</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web46"><span class="nav-number">1.18.</span> <span class="nav-text">web46</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web47"><span class="nav-number">1.19.</span> <span class="nav-text">web47</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web48"><span class="nav-number">1.20.</span> <span class="nav-text">web48</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web49"><span class="nav-number">1.21.</span> <span class="nav-text">web49</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome-95H7mKK28r-C-Users-23627-Pictures-Saved-Pictures-chrome-95H7mKK28r-png"><span class="nav-number">1.22.</span> <span class="nav-text">![chrome_95H7mKK28r](C:\Users\23627\Pictures\Saved Pictures\chrome_95H7mKK28r.png)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web50"><span class="nav-number">1.23.</span> <span class="nav-text">web50</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web51"><span class="nav-number">1.24.</span> <span class="nav-text">web51</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web52"><span class="nav-number">1.25.</span> <span class="nav-text">web52</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web53"><span class="nav-number">1.26.</span> <span class="nav-text">web53</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web54"><span class="nav-number">1.27.</span> <span class="nav-text">web54</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web55"><span class="nav-number">1.28.</span> <span class="nav-text">web55</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web56"><span class="nav-number">1.29.</span> <span class="nav-text">web56</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85P%E7%A5%9E%E5%B8%88%E5%82%85%E7%9A%84%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97webshell%EF%BC%8C"><span class="nav-number">1.29.0.1.</span> <span class="nav-text">补充P神师傅的无字母数字webshell，</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web57"><span class="nav-number">1.30.</span> <span class="nav-text">web57</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web58-65"><span class="nav-number">1.31.</span> <span class="nav-text">web58-65</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-%E7%BE%BD%E5%B8%88%E5%82%85%E5%AF%B9%E4%BA%8E%E7%BB%95%E8%BF%87disable-function%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">1.31.0.1.</span> <span class="nav-text">补充 羽师傅对于绕过disable function的总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web66"><span class="nav-number">1.32.</span> <span class="nav-text">web66</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web67"><span class="nav-number">1.33.</span> <span class="nav-text">web67</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web68"><span class="nav-number">1.34.</span> <span class="nav-text">web68</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web69"><span class="nav-number">1.35.</span> <span class="nav-text">web69</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web70"><span class="nav-number">1.36.</span> <span class="nav-text">web70</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web71"><span class="nav-number">1.37.</span> <span class="nav-text">web71</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web72"><span class="nav-number">1.38.</span> <span class="nav-text">web72</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web73"><span class="nav-number">1.39.</span> <span class="nav-text">web73</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web74"><span class="nav-number">1.40.</span> <span class="nav-text">web74</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web75"><span class="nav-number">1.41.</span> <span class="nav-text">web75</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web76"><span class="nav-number">1.42.</span> <span class="nav-text">web76</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web77"><span class="nav-number">1.43.</span> <span class="nav-text">web77</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-%E7%BE%BD%E5%B8%88%E5%82%85%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">1.43.0.1.</span> <span class="nav-text">补充 羽师傅的总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web118"><span class="nav-number">1.44.</span> <span class="nav-text">web118</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web119"><span class="nav-number">1.45.</span> <span class="nav-text">web119</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web120"><span class="nav-number">1.46.</span> <span class="nav-text">web120</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web121"><span class="nav-number">1.47.</span> <span class="nav-text">web121</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web122"><span class="nav-number">1.48.</span> <span class="nav-text">web122</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web124"><span class="nav-number">1.49.</span> <span class="nav-text">web124</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
