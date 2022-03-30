@@ -20,38 +20,19 @@
     var CONFIG = {"hostname":"yun421.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 本题打开网页查看源代码即得到flag">
+  <meta name="description" content="普通文件包含 常见的php伪协议大致四种 1.php:&#x2F;&#x2F;filter  主要用于读取源码2.php:&#x2F;&#x2F;input  经常使用file_get_contents获取php:&#x2F;&#x2F;input内容3.data:&#x2F;&#x2F;  执行命令4.file:&#x2F;&#x2F;  访问本地文件系统 不能忘了convert，用于转换编码，缺少会报错 用日志包含绕过，将执行的命令插入日志中nginx日志在(&#x2F;var&#x2F;log&#x2F;httpd&#x2F;a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="攻防世界新手区题解">
-<meta property="og:url" content="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="文件包含">
+<meta property="og:url" content="http://yun421.top/2021/03/10/ctfshow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/index.html">
 <meta property="og:site_name" content="Yun421">
-<meta property="og:description" content="1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。 本题打开网页查看源代码即得到flag">
+<meta property="og:description" content="普通文件包含 常见的php伪协议大致四种 1.php:&#x2F;&#x2F;filter  主要用于读取源码2.php:&#x2F;&#x2F;input  经常使用file_get_contents获取php:&#x2F;&#x2F;input内容3.data:&#x2F;&#x2F;  执行命令4.file:&#x2F;&#x2F;  访问本地文件系统 不能忘了convert，用于转换编码，缺少会报错 用日志包含绕过，将执行的命令插入日志中nginx日志在(&#x2F;var&#x2F;log&#x2F;httpd&#x2F;a">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215200757492.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215201219732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215201950773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215202420114.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215202546626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121520265144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215202759581.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215205159138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215205613779.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215210046824.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215210538673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215211106145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215215207985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121521560195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215215709330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215220114458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201215220342689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2021-03-04T06:52:33.000Z">
-<meta property="article:modified_time" content="2022-03-04T09:34:46.945Z">
+<meta property="article:published_time" content="2021-03-10T13:29:56.000Z">
+<meta property="article:modified_time" content="2022-03-04T10:20:21.932Z">
 <meta property="article:author" content="Yun421">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70">
 
-<link rel="canonical" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
+<link rel="canonical" href="http://yun421.top/2021/03/10/ctfshow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
 
 
 <script id="page-configurations">
@@ -64,7 +45,7 @@
   };
 </script>
 
-  <title>攻防世界新手区题解 | Yun421</title>
+  <title>文件包含 | Yun421</title>
   
 
 
@@ -191,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://yun421.top/2021/03/10/ctfshow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -204,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          攻防世界新手区题解
+          文件包含
         </h1>
 
         <div class="post-meta">
@@ -214,14 +195,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-03-04 14:52:33" itemprop="dateCreated datePublished" datetime="2021-03-04T14:52:33+08:00">2021-03-04</time>
+              <time title="创建时间：2021-03-10 21:29:56" itemprop="dateCreated datePublished" datetime="2021-03-10T21:29:56+08:00">2021-03-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-04 17:34:46" itemprop="dateModified" datetime="2022-03-04T17:34:46+08:00">2022-03-04</time>
+                <time title="修改时间：2022-03-04 18:20:21" itemprop="dateModified" datetime="2022-03-04T18:20:21+08:00">2022-03-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,7 +210,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
+                  <a href="/categories/CTFSHOW/" itemprop="url" rel="index"><span itemprop="name">CTFSHOW</span></a>
                 </span>
             </span>
 
@@ -244,9 +225,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>1.view_source：X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。<br> 本题打开网页查看源代码即得到flag<span id="more"></span><br> 2.robots：X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。<br> 本题看提示robots协议，就在地址栏后面跟上robots.txt，</p>
-<p><img src="https://img-blog.csdnimg.cn/2020121520061913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 可以看到第三行，即地址栏修改为f1ag_1s_h3re.php，<img src="https://img-blog.csdnimg.cn/20201215200757492.png" alt="在这里插入图片描述"><br>3.backup:X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！<br>本题需要知道备份文件的后缀名，常见的备份文件后缀名有: .git .svn .swp .svn .~ .bak .bash_history，尝试后发现为bak，故地址栏修改为index.php.bak<img src="https://img-blog.csdnimg.cn/20201215201219732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>4.cookie:X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’<br>本题需要查看cookie，F12查看源代码，选择cookie栏<img src="https://img-blog.csdnimg.cn/20201215201950773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>5.disabled_button：X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？<br>本题只要想办法让按钮可以按即可，查看源代码发现这一条，将其删除，按钮可以按下<br><img src="https://img-blog.csdnimg.cn/20201215202420114.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201215202546626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>6.weak_auth：小宁写了一个登陆验证页面，随手就设了一个密码。<br><img src="https://img-blog.csdnimg.cn/2020121520265144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随便输入登录提示使用admin用户名，然后网页地址到了check.php<br><img src="https://img-blog.csdnimg.cn/20201215202759581.png" alt="在这里插入图片描述"><br>用burp抓包，send to Intruder，在Positions中先clear§，再在password的值左右Add§<br><img src="https://img-blog.csdnimg.cn/20201215205159138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>选择payloads选项，载入字典进行爆破，查看返回结果可知密码<br>7.simple_php：小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。<br><img src="https://img-blog.csdnimg.cn/20201215205613779.png" alt="在这里插入图片描述"><br>进行php代码审计，php中有两种比较符号，=== 会同时比较字符串的值和类型，== 会先将字符串换成相同类型，再作比较，属于弱类型比较<br>当同时满足a==0和a时输出flag1<img src="https://img-blog.csdnimg.cn/20201215210046824.png" alt="在这里插入图片描述"><br>== 是不严格的比较,会先进行类型转换再比较 ,查看php类型比较表<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/types.comparisons.php">https://www.php.net/manual/zh/types.comparisons.php</a><br>发现“0”为 true，所以可以把参数 a 构造为’0’或者‘alph’这种转换后为 0 但本身不为 False 的形式<br>ps：数字和字符混合的字符串转换为整数后只保留数字！<br>is_numeric() 函数用于检测类型是否为数字或数字字符串<img src="https://img-blog.csdnimg.cn/20201215210538673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>8.get_post：X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？<br>GET - 从指定的资源请求数据<br>POST - 向指定的资源提交要被处理的数据<br>在地址后加？分隔，a=1；用hackbar插件post data传b=2<img src="https://img-blog.csdnimg.cn/20201215211106145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>9.xff_referer：X老师告诉小宁其实xff和referer是可以伪造的。<br>X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项<br>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的<br>用burp抓包，先xff，后发现需要referer<br>10.webshell：小宁百度了php一句话,觉着很有意思,并且把它放在index.php里。<br>一句话木马，通过蚁剑连接，发现一个flag.txt文件<img src="https://img-blog.csdnimg.cn/20201215215207985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>11.command_execution:小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。<br>在文本框中写127.0.0.1 | find / -name “flag.txt” <img src="https://img-blog.csdnimg.cn/2020121521560195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>看到目录下的flag文件，打开<br><img src="https://img-blog.csdnimg.cn/20201215215709330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>12.simple_js：小宁发现了一个网页，但却一直输不对密码。(Flag格式为 Cyberpeace{xxxxxxxxx} )<br>输入任何密码都错误，源代码中<img src="https://img-blog.csdnimg.cn/20201215220114458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>应该是base16，写脚本<br><img src="https://img-blog.csdnimg.cn/20201215220342689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1bndhbmcwNDIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+        <p>普通文件包含</p>
+<p>常见的php伪协议大致四种</p>
+<p>1.php://filter  主要用于读取源码<br>2.php://input  经常使用file_get_contents获取php://input内容<br>3.data://  执行命令<br>4.file://  访问本地文件系统</p>
+<p>不能忘了convert，用于转换编码，缺少会报错</p>
+<p>用日志包含绕过，将执行的命令插入日志中nginx日志在(/var/log/httpd/access.log)目录下</p>
+<p>利用PHP_SESSION_UPLOAD_PROGRESS进行文件包含</p>
+<p>1.简单来说，上面这个选项开启以后，上传文件，我们能够POST请求查看上传进度</p>
+<p>2.我们在session中写入我们要执行的代码</p>
+<p>3.用户可以自己定义Session ID，比如在Cookie里设置PHPSESSID=flag，PHP将会在服务器上创建一个文件：/tmp/sess_flag，我们能够命名’sess_’后面的名字</p>
+<p>4.之后要执行就要包含这个session文件</p>
+<p>5.默认情况下，session.upload_progress.cleanup是开启的，一旦读取了所有POST数据，就会清除进度信息</p>
+<p>6.于是我们需要条件竞争来读取文件，所谓条件竞争简单来说是在执行系统命令前先执行完自己的代码，在文件上传中很常见</p>
 
     </div>
 
@@ -281,12 +271,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/04/Web%20%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E9%AB%98%E6%89%8B%E5%8C%BA%E9%A2%98%E8%A7%A3/" rel="prev" title="攻防世界高手区题解">
-      <i class="fa fa-chevron-left"></i> 攻防世界高手区题解
+    <a href="/2021/03/10/ctfshow.%E6%96%B0%E6%89%8Bweb/" rel="prev" title="ctfshow Web">
+      <i class="fa fa-chevron-left"></i> ctfshow Web
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/03/10/ctfshow/" rel="next" title="ctfshow Web">
-      ctfshow Web <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/10/ctfshow.%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="next" title="ctfshow.文件上传">
+      ctfshow.文件上传 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -368,7 +358,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
